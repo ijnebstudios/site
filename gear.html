@@ -5,15 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Gear · ijneb studios</title>
 <meta name="description" content="Studio gear at ijneb studios. Instruments, recording, streaming, and multitrack podcasting." />
-<meta name="theme-color" content="#07070a" />
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
 <meta http-equiv="Pragma" content="no-cache" />
 <meta http-equiv="Expires" content="0" />
-  <link rel="icon" type="image/png" href="favicon.png?v=2">
-  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=2">
-  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png?v=2">
-
-<style>
+  <style>
 
 :root{
   --bg:#07070a;
@@ -195,12 +190,16 @@ h1{margin:0 0 10px;font-size: clamp(34px, 4.4vw, 56px);letter-spacing:-.03em;lin
 .imgCard .cap{padding:10px 10px 12px;color:var(--muted);font-size:13px;line-height:1.4;font-weight:700;}
 @media (max-width: 980px){.hero{grid-template-columns:1fr;} .heroImg{height:240px;}}
 </style>
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=2026-02-09-9">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png?v=2026-02-09-9">
+  <link rel="apple-touch-icon" href="favicon.png?v=2026-02-09-9">
+  <meta name="theme-color" content="#07070a">
 </head>
 <body>
 <header>
   <div class="wrap">
     <div class="topbar">
-      <a class="brand" href="index.html?v=2026-02-09-1" aria-label="ijneb studios home">
+      <a class="brand" href="index.html?v=2026-02-09-9" aria-label="ijneb studios home">
         <svg viewBox="0 0 64 64" role="img" aria-label="ijneb studios logo">
   <defs>
     <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
@@ -225,10 +224,10 @@ h1{margin:0 0 10px;font-size: clamp(34px, 4.4vw, 56px);letter-spacing:-.03em;lin
         </div>
       </a>
       <nav aria-label="Primary">
-        <a class="pill" href="artists.html?v=2026-02-09-1" data-accent="panda"><span class="dot"></span>Artists</a>
-        <a class="pill" href="gear.html?v=2026-02-09-1" data-accent="hipa"><span class="dot"></span>Gear</a>
-        <a class="pill" href="index.html?v=2026-02-09-1#facility" data-accent="hipa"><span class="dot"></span>Studio</a>
-        <a class="pill" href="index.html?v=2026-02-09-1#connect" data-accent="mind"><span class="dot"></span>Connect</a>
+        <a class="pill" href="artists.html?v=2026-02-09-9" data-accent="panda"><span class="dot"></span>Artists</a>
+        <a class="pill" href="gear.html?v=2026-02-09-9" data-accent="hipa"><span class="dot"></span>Gear</a>
+        <a class="pill" href="index.html?v=2026-02-09-9#facility" data-accent="hipa"><span class="dot"></span>Studio</a>
+        <a class="pill" href="index.html?v=2026-02-09-9#connect" data-accent="mind"><span class="dot"></span>Connect</a>
       </nav>
     </div>
   </div>
@@ -246,13 +245,13 @@ h1{margin:0 0 10px;font-size: clamp(34px, 4.4vw, 56px);letter-spacing:-.03em;lin
           <div class="badge">streaming</div>
         </div>
         <div style="margin-top:12px;">
-          <a class="miniLink" href="index.html?v=2026-02-09-1#connect">Book time</a>
-          <a class="miniLink" href="artists.html?v=2026-02-09-1">Artists</a>
+          <a class="miniLink" href="index.html?v=2026-02-09-9#connect">Book time</a>
+          <a class="miniLink" href="artists.html?v=2026-02-09-9">Artists</a>
         </div>
         <p style="margin-top:12px;color:var(--muted2);font-size:12px;">Tip: drop gear photos into <span style="color:var(--muted)">images/</span> (or <span style="color:var(--muted)">images/gear/</span>) and name them to match each item. This page will try to auto-load them.</p>
       </div>
       <div>
-        <img class="heroImg" src="images/studioview.jpg" alt="Panda Strike">
+        <img class="heroImg" src="images/ijnebstudios-studioview.jpg" alt="Panda Strike">
       </div>
     </div>
 
@@ -398,11 +397,14 @@ h1{margin:0 0 10px;font-size: clamp(34px, 4.4vw, 56px);letter-spacing:-.03em;lin
   </div>
 </main>
 
+
 <script>
-  // Auto-load gear images from /images or /images/gear based on the label text.
-  // Expected filenames: a slug of the label, e.g. "yamaha-p80-digital-piano.jpg" (or .png/.webp/.jpeg)
+  // Gear image loader
+  // Uses an explicit filename map first (because your image filenames are hand-named),
+  // then falls back to slug-based guessing.
   (function(){
-    const exts = ["webp","jpg","jpeg","png"];
+    const exts = ["webp","jpg","jpeg","png","jfif"];
+    const VERSION = "2026-02-09-2";
 
     const slugify = (s) => (s || "")
       .toLowerCase()
@@ -411,8 +413,44 @@ h1{margin:0 0 10px;font-size: clamp(34px, 4.4vw, 56px);letter-spacing:-.03em;lin
       .replace(/-+/g, "-")
       .replace(/^-|-$/g, "");
 
+    // Map: slug(label) -> exact file in /images
+    const FILE_MAP = {
+    "yamahap80-digital-piano": "images/yamahap80.jfif",
+    "ibanez-rg421ahm-guitar": "images/ibanez.jfif",
+    "artist-prs-guitar": "images/artistguitar.jpg",
+    "squier-strat-guitar": "images/squirestrat.jfif",
+    "steel-string-acoustic-guitar": "images/acousticsteel.jpeg",
+    "nylon-string-acoustic-guitar": "images/acousticnylon.jpeg",
+    "artist-slide-resonator-guitar": "images/slideresonator.jfif",
+    "sx-series-vintage-bass": "images/sxseriesvintagebass.jpg",
+    "donner-d80-electric-drumkit": "images/donnerded20.jfif",
+    "boss-katana-50-gen1": "images/bosskatana.jpg",
+    "roland-cube-15x": "images/rolandcube.jfif",
+    "wuheaao-guitar-amp-mini-15w-portable": "images/Wuheaaoamp.jfif",
+    "boss-me-20-multi-effects-pedal": "images/bossme20.webp",
+    "behringer-umc404hd-4-channel-mixer": "images/Behringer-UMC404HD.jfif",
+    "8-channel-headphone-output-for-up-to-8-individual-headsets": "images/headphonesplitteramp.jpg",
+    "1x-shure-sm7": "images/shurem7.webp",
+    "1x-yeti-nano": "images/yetinano.jfif",
+    "4-lapel-mics": "images/wirelesslavmics.jpg",
+    "edifier-m3-studio-monitors": "images/edifier-m3.webp",
+    "6x-cameras-eos600d-various-1080p-webcams": "images/studio.jpg",
+    "dedicated-obs-streaming-pc": "images/studioobsview.jpg",
+    "macbook-pro-2018": "images/ijnebstudios-studioview.jpg",
+    "macbook-pro-m1-2022": "images/obsview-draft.jpg",
+    "logic-pro-11": "images/obsview-draft.jpg",
+    "bandlab": "images/banner.png",
+  };
+
     const buildCandidates = (label) => {
       const slug = slugify(label);
+
+      // 1) Explicit map (most reliable)
+      if (FILE_MAP[slug]) {
+        return [`${FILE_MAP[slug]}?v=${VERSION}`];
+      }
+
+      // 2) Fallback: guess common slug filenames (if you ever rename to slug format)
       const bases = [
         `images/gear/${slug}`,
         `images/${slug}`
@@ -420,7 +458,7 @@ h1{margin:0 0 10px;font-size: clamp(34px, 4.4vw, 56px);letter-spacing:-.03em;lin
       const c = [];
       for (const b of bases){
         for (const e of exts){
-          c.push(`${b}.${e}?v=2026-02-09-1`);
+          c.push(`${b}.${e}?v=${VERSION}`);
         }
       }
       return c;
@@ -440,19 +478,20 @@ h1{margin:0 0 10px;font-size: clamp(34px, 4.4vw, 56px);letter-spacing:-.03em;lin
     document.querySelectorAll(".sectionBox").forEach(section => {
       const labels = Array.from(section.querySelectorAll("ul.list li")).map(li => li.textContent.trim());
       const cards = section.querySelectorAll(".scroller .imgCard");
+
       labels.forEach((label, idx) => {
         const card = cards[idx];
         if (!card) return;
         const img = card.querySelector("img");
         if (!img) return;
         img.dataset.placeholder = img.getAttribute("src") || "";
-        img.setAttribute("alt", label);
-        const cap = card.querySelector(".cap");
-        if (cap) cap.textContent = label;
+        img.removeAttribute("src");
+        img.classList.remove("isPlaceholder");
         tryLoad(img, buildCandidates(label));
       });
     });
   })();
 </script>
+
 </body>
 </html>
