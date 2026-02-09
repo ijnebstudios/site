@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Artists · ijneb studios</title>
-  <meta name="description" content="Artists and projects at ijneb studios. Panda Strike, HiPatheticalAl, MINDSHANK." />
+  <title>Gear · ijneb studios</title>
+  <meta name="description" content="Studio gear available at ijneb studios in Melbourne, including multitrack podcasting, recording, and streaming." />
 
   <link rel="icon" type="image/png" href="/favicon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
@@ -17,13 +17,9 @@
       --muted:#dde0ee;
       --muted2:#b9bfd6;
       --line:rgba(255,255,255,.22);
-      --panda:#00ff88;
-      --hipa:#00ddff;
-      --mind:#ff6600;
       --radius:22px;
       --shadow:0 22px 70px rgba(0,0,0,.7);
     }
-
     *{box-sizing:border-box}
     body{
       margin:0;
@@ -31,9 +27,8 @@
       background:var(--bg);
       color:var(--text);
     }
-
     a{color:inherit}
-    .wrap{max-width:1100px;margin:0 auto;padding:0 20px}
+    .wrap{max-width:980px;margin:0 auto;padding:0 20px}
 
     header{
       position:fixed;
@@ -43,7 +38,6 @@
       border-bottom:1px solid var(--line);
       z-index:10;
     }
-
     .topbar{
       display:flex;
       align-items:center;
@@ -52,19 +46,13 @@
       gap:12px;
       flex-wrap:wrap;
     }
-
     .brand{
-      display:flex;
-      gap:12px;
-      align-items:center;
       text-decoration:none;
       font-weight:800;
       letter-spacing:.08em;
       text-transform:lowercase;
     }
-
-    nav{display:flex;gap:10px; flex-wrap:wrap;}
-
+    nav{display:flex; gap:10px; flex-wrap:wrap;}
     .pill{
       padding:9px 12px;
       border-radius:999px;
@@ -76,11 +64,8 @@
     }
 
     main{padding:120px 0 40px}
-
-    h1{font-size:clamp(36px,4vw,56px); margin:0 0 10px;}
-    .intro{max-width:70ch; color:var(--muted); line-height:1.7; margin-bottom:26px;}
-
-    .grid{display:grid; grid-template-columns:repeat(3,1fr); gap:16px;}
+    h1{font-size:clamp(36px,4vw,52px); margin:0 0 10px;}
+    p{color:var(--muted); line-height:1.7; margin:0 0 22px;}
 
     .card{
       border:1px solid var(--line);
@@ -88,59 +73,17 @@
       border-radius:var(--radius);
       padding:18px;
       box-shadow:var(--shadow);
+      margin-bottom:16px;
     }
-
-    .img{
-      width:100%;
-      aspect-ratio: 16/10;
-      object-fit: cover;
-      border-radius: 14px;
-      margin-bottom: 12px;
-      border: 1px solid rgba(255,255,255,.18);
-    }
-
-    .tag{
-      font-size:11px;
-      letter-spacing:.12em;
-      text-transform:uppercase;
-      font-weight:800;
-      margin-bottom:8px;
-      display:flex;
-      align-items:center;
-      gap:8px;
-      color: var(--muted2);
-    }
-
-    .chip{width:10px;height:10px;border-radius:3px}
-    .panda{background:var(--panda)}
-    .hipa{background:var(--hipa)}
-    .mind{background:var(--mind)}
-
-    h2{margin:8px 0}
-    p{color:var(--muted); line-height:1.6; font-size:14px; margin:0 0 12px;}
-
-    .links a{
-      display:inline-block;
-      padding:8px 10px;
-      border-radius:12px;
-      border:1px solid var(--line);
-      background:rgba(255,255,255,.06);
-      font-size:13px;
-      font-weight:800;
-      text-decoration:none;
-    }
-
+    h2{margin:0 0 10px; font-size:18px; letter-spacing:.08em; text-transform:uppercase;}
+    ul{margin:0; padding-left:18px; color:var(--muted); line-height:1.8;}
     footer{
-      margin-top:40px;
-      padding-top:20px;
+      margin-top:26px;
+      padding-top:18px;
       border-top:1px solid var(--line);
       color:var(--muted2);
       font-size:12px;
       line-height:1.6;
-    }
-
-    @media(max-width:900px){
-      .grid{grid-template-columns:1fr}
     }
   
     .brandWrap{display:flex;align-items:center;gap:12px;text-decoration:none;}
@@ -192,42 +135,85 @@
 
 <main>
   <div class="wrap">
-    <h1>Artists</h1>
-    <p class="intro">
-      House projects today, signed artists tomorrow. Each project has its own lane, its own sound, and full creative autonomy.
+    <h1>Gear</h1>
+    <p>
+      A studio that stays ready. Recording, streaming, and multitrack podcasting with individual monitoring.
     </p>
 
-    <section class="grid">
-      <article id="panda" class="card">
-        <img class="img" src="/images/pandastrike.jpeg" alt="Panda Strike" style="object-position:50% 70%;">
-        <div class="tag"><span class="chip panda"></span>noise rock · pop punk · metalcore</div>
-        <h2>Panda Strike</h2>
-        <p>Raw, fast, loud, and unapologetic. Built around riffs, breakdowns, and hooks that hit first.</p>
-        <div class="links">
-          <a href="https://www.bandlab.com/band/pandastrike" target="_blank" rel="noopener">BandLab</a>
-        </div>
-      </article>
 
-      <article id="hipa" class="card">
-        <img class="img" src="/images/hipathetical.jpg" alt="HiPatheticalAl">
-        <div class="tag"><span class="chip hipa"></span>electronic · digital · upbeat</div>
-        <h2>HiPatheticalAl</h2>
-        <p>Bright synths, punchy rhythms, and optimistic digital chaos. Computers doing their job.</p>
-        <div class="links">
-          <a href="https://www.bandlab.com/hipathetical/" target="_blank" rel="noopener">BandLab</a>
-        </div>
-      </article>
+    <div class="card">
+      <h2>Instruments</h2>
+      <ul>
+        <li>Yamaha P80 digital piano</li>
+        <li>Ibanez RG421AHM guitar</li>
+        <li>Artist PRS style guitar</li>
+        <li>Squier Strat guitar</li>
+        <li>Steel string acoustic guitar</li>
+        <li>Nylon string acoustic guitar</li>
+        <li>Artist slide resonator guitar</li>
+        <li>SX Series bass guitar</li>
+        <li>Donner D80 electronic drumkit</li>
+      </ul>
+    </div>
 
-      <article id="mind" class="card">
-        <img class="img" src="/images/mindshank.jpg" alt="MINDSHANK">
-        <div class="tag"><span class="chip mind"></span>collective · any style · rotating crew</div>
-        <h2>MINDSHANK</h2>
-        <p>A rotating collective of collaborators. Any genre, any contribution, any structure.</p>
-        <div class="links">
-          <a href="https://www.bandlab.com/band/mindshank" target="_blank" rel="noopener">BandLab</a>
-        </div>
-      </article>
-    </section>
+    <div class="card">
+      <h2>Amps and effects</h2>
+      <ul>
+        <li>BOSS Katana 50 (Gen 1)</li>
+        <li>Roland Cube 15x</li>
+        <li>Wuheaao guitar amp mini, 15W portable</li>
+        <li>BOSS ME-20 multi effects pedal</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Audio and monitoring</h2>
+      <ul>
+        <li>Behringer UMC404HD audio interface (4 inputs)</li>
+        <li>8 channel headphone output for up to 8 individual headsets while recording</li>
+        <li>3 sets of wired headphones</li>
+        <li>2 sets of wireless headphones (Bluetooth and USB dongle)</li>
+        <li>Edifier M3 monitors</li>
+        <li>Shure SM7 microphone</li>
+        <li>Yeti Nano microphone</li>
+        <li>4 lapel mics</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Computers and software</h2>
+      <ul>
+        <li>MacBook Pro 2018 (studio machine)</li>
+        <li>Logic Pro 11</li>
+        <li>MacBook Pro M1 2022 (available as needed)</li>
+        <li>Dedicated OBS streaming PC</li>
+        <li>External display duplicating the MacBook Pro</li>
+        <li>External touch display (Mac extended, also HDMI into OBS PC for control)</li>
+        <li>Dedicated peripherals for Mac and PC (mouse and keyboard)</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Cameras and streaming</h2>
+      <ul>
+        <li>Canon EOS 600D, wide room cam via OBS</li>
+        <li>Microsoft LifeCam webcam, piano cam</li>
+        <li>Samsung S9+, top view room cam via VDO.Ninja</li>
+        <li>Samsung S22 Ultra, lounge cam via VDO.Ninja</li>
+        <li>Samsung Galaxy Tab 8, bedroom cam via VDO.Ninja</li>
+        <li>Multi cam scene switching and streaming via OBS</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Podcasting</h2>
+      <ul>
+        <li>Multitrack podcast recording</li>
+        <li>Individual headphone mixes per guest</li>
+        <li>Remote friendly setup with lapel mics and camera angles</li>
+      </ul>
+    </div>
+
 
     <footer>
       © 2026 ijneb studios · Melbourne, AU<br/>
