@@ -6,19 +6,20 @@
   <title>Artists · ijneb studios</title>
   <meta name="description" content="Artists and projects at ijneb studios. Panda Strike, HiPatheticalAl, MINDSHANK." />
 
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+
   <style>
     :root{
       --bg:#050508;
-      --panel:#0b0c10;
       --text:#ffffff;
       --muted:#dde0ee;
       --muted2:#b9bfd6;
       --line:rgba(255,255,255,.22);
-
       --panda:#00ff88;
       --hipa:#00ddff;
       --mind:#ff6600;
-
       --radius:22px;
       --shadow:0 22px 70px rgba(0,0,0,.7);
     }
@@ -32,6 +33,7 @@
     }
 
     a{color:inherit}
+    .wrap{max-width:1100px;margin:0 auto;padding:0 20px}
 
     header{
       position:fixed;
@@ -42,14 +44,13 @@
       z-index:10;
     }
 
-    .wrap{max-width:1100px;margin:0 auto;padding:0 20px}
-
     .topbar{
       display:flex;
       align-items:center;
       justify-content:space-between;
       padding:14px 0;
       gap:12px;
+      flex-wrap:wrap;
     }
 
     .brand{
@@ -57,15 +58,12 @@
       gap:12px;
       align-items:center;
       text-decoration:none;
-    }
-
-    .brand strong{
-      font-size:16px;
+      font-weight:800;
       letter-spacing:.08em;
       text-transform:lowercase;
     }
 
-    nav{display:flex;gap:10px}
+    nav{display:flex;gap:10px; flex-wrap:wrap;}
 
     .pill{
       padding:9px 12px;
@@ -74,28 +72,15 @@
       background:rgba(255,255,255,.06);
       text-decoration:none;
       font-size:13px;
-      font-weight:700;
+      font-weight:750;
     }
 
     main{padding:120px 0 40px}
 
-    h1{
-      font-size:clamp(36px,4vw,56px);
-      margin:0 0 12px;
-    }
+    h1{font-size:clamp(36px,4vw,56px); margin:0 0 10px;}
+    .intro{max-width:70ch; color:var(--muted); line-height:1.7; margin-bottom:26px;}
 
-    .intro{
-      max-width:70ch;
-      color:var(--muted);
-      line-height:1.7;
-      margin-bottom:32px;
-    }
-
-    .grid{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:16px;
-    }
+    .grid{display:grid; grid-template-columns:repeat(3,1fr); gap:16px;}
 
     .card{
       border:1px solid var(--line);
@@ -103,6 +88,15 @@
       border-radius:var(--radius);
       padding:18px;
       box-shadow:var(--shadow);
+    }
+
+    .img{
+      width:100%;
+      aspect-ratio: 16/10;
+      object-fit: cover;
+      border-radius: 14px;
+      margin-bottom: 12px;
+      border: 1px solid rgba(255,255,255,.18);
     }
 
     .tag{
@@ -114,23 +108,16 @@
       display:flex;
       align-items:center;
       gap:8px;
+      color: var(--muted2);
     }
 
     .chip{width:10px;height:10px;border-radius:3px}
-
     .panda{background:var(--panda)}
     .hipa{background:var(--hipa)}
     .mind{background:var(--mind)}
 
     h2{margin:8px 0}
-
-    p{
-      color:var(--muted);
-      line-height:1.6;
-      font-size:14px;
-    }
-
-    .links{margin-top:12px}
+    p{color:var(--muted); line-height:1.6; font-size:14px; margin:0 0 12px;}
 
     .links a{
       display:inline-block;
@@ -149,6 +136,7 @@
       border-top:1px solid var(--line);
       color:var(--muted2);
       font-size:12px;
+      line-height:1.6;
     }
 
     @media(max-width:900px){
@@ -161,11 +149,10 @@
 <header>
   <div class="wrap">
     <div class="topbar">
-      <a href="index.html" class="brand">
-        <strong>ijneb studios</strong>
-      </a>
+      <a href="index.html" class="brand">ijneb studios</a>
       <nav>
         <a class="pill" href="index.html">Home</a>
+        <a class="pill" href="gear.html">Gear</a>
         <a class="pill" href="#panda">Panda Strike</a>
         <a class="pill" href="#hipa">HiPatheticalAl</a>
         <a class="pill" href="#mind">MINDSHANK</a>
@@ -178,41 +165,44 @@
   <div class="wrap">
     <h1>Artists</h1>
     <p class="intro">
-      House projects today, signed artists tomorrow. Each project has its own lane,
-      its own sound, and full creative autonomy.
+      House projects today, signed artists tomorrow. Each project has its own lane, its own sound, and full creative autonomy.
     </p>
 
     <section class="grid">
       <article id="panda" class="card">
+        <img class="img" src="/images/pandastrike.jpeg" alt="Panda Strike">
         <div class="tag"><span class="chip panda"></span>noise rock · pop punk · metalcore</div>
         <h2>Panda Strike</h2>
         <p>Raw, fast, loud, and unapologetic. Built around riffs, breakdowns, and hooks that hit first.</p>
         <div class="links">
-          <a href="https://www.bandlab.com/band/pandastrike" target="_blank">BandLab</a>
+          <a href="https://www.bandlab.com/band/pandastrike" target="_blank" rel="noopener">BandLab</a>
         </div>
       </article>
 
       <article id="hipa" class="card">
+        <img class="img" src="/images/hipathetical.jpg" alt="HiPatheticalAl">
         <div class="tag"><span class="chip hipa"></span>electronic · digital · upbeat</div>
         <h2>HiPatheticalAl</h2>
         <p>Bright synths, punchy rhythms, and optimistic digital chaos. Computers doing their job.</p>
         <div class="links">
-          <a href="https://www.bandlab.com/hipathetical/" target="_blank">BandLab</a>
+          <a href="https://www.bandlab.com/hipathetical/" target="_blank" rel="noopener">BandLab</a>
         </div>
       </article>
 
       <article id="mind" class="card">
+        <img class="img" src="/images/mindshank.jpg" alt="MINDSHANK">
         <div class="tag"><span class="chip mind"></span>collective · any style · rotating crew</div>
         <h2>MINDSHANK</h2>
         <p>A rotating collective of collaborators. Any genre, any contribution, any structure.</p>
         <div class="links">
-          <a href="https://www.bandlab.com/band/mindshank" target="_blank">BandLab</a>
+          <a href="https://www.bandlab.com/band/mindshank" target="_blank" rel="noopener">BandLab</a>
         </div>
       </article>
     </section>
 
     <footer>
-      © 2026 ijneb studios · Melbourne, AU
+      © 2026 ijneb studios · Melbourne, AU<br/>
+      ABN 68&nbsp;827&nbsp;519&nbsp;129
     </footer>
   </div>
 </main>

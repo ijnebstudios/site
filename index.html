@@ -6,6 +6,10 @@
   <title>ijneb studios</title>
   <meta name="description" content="Melbourne-based music production studio and creative collective. Panda Strike, HiPatheticalAl, MINDSHANK." />
 
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+
   <style>
     :root{
       --bg:#07070a;
@@ -232,6 +236,7 @@
       color: var(--muted2);
       font-size: 12px;
       letter-spacing:.03em;
+      line-height:1.6;
     }
 
     .heroAside{
@@ -323,75 +328,6 @@
 
     .sectionHead p{margin:0; color: var(--muted); font-size: 13px; line-height: 1.5; max-width: 60ch;}
 
-    .grid3{display:grid; grid-template-columns: repeat(3, 1fr); gap: 14px;}
-
-    .rosterCard{
-      position:relative;
-      padding: 16px;
-      border:1px solid var(--line);
-      background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(0,0,0,.18));
-      border-radius: var(--radius);
-      overflow:hidden;
-      transition: transform .15s ease, border-color .15s ease;
-    }
-
-    .rosterCard:hover{transform: translateY(-2px); border-color: rgba(255,255,255,.22)}
-
-    .stripe{
-      position:absolute;
-      inset:0;
-      background: radial-gradient(500px 260px at 20% 0%, rgba(255,255,255,.06), transparent 55%);
-      opacity:.9;
-      pointer-events:none;
-    }
-
-    .rosterCard[data-accent="panda"] .stripe{
-      background: radial-gradient(560px 280px at 20% 0%, rgba(0,255,136,.14), transparent 55%);
-    }
-
-    .rosterCard[data-accent="hipa"] .stripe{
-      background: radial-gradient(560px 280px at 20% 0%, rgba(0,221,255,.14), transparent 55%);
-    }
-
-    .rosterCard[data-accent="mind"] .stripe{
-      background: radial-gradient(560px 280px at 20% 0%, rgba(255,102,0,.16), transparent 55%);
-    }
-
-    .rosterTop{display:flex; align-items:center; justify-content:space-between; gap:12px;}
-
-    .tag{
-      font-size:11px;
-      letter-spacing:.12em;
-      text-transform:uppercase;
-      color: var(--muted);
-      font-weight:800;
-      display:flex;
-      align-items:center;
-      gap:10px;
-    }
-
-    .tag .chip{width:10px; height:10px; border-radius:3px; background: rgba(255,255,255,.22)}
-    .rosterCard[data-accent="panda"] .tag .chip{background: var(--panda)}
-    .rosterCard[data-accent="hipa"] .tag .chip{background: var(--hipa)}
-    .rosterCard[data-accent="mind"] .tag .chip{background: var(--mind)}
-
-    .rosterCard h4{margin: 12px 0 6px; font-size: 20px; letter-spacing:.02em;}
-    .rosterCard p{margin: 0 0 14px; color: var(--muted); font-size: 13.5px; line-height: 1.6;}
-
-    .links{display:flex; gap:10px; flex-wrap:wrap;}
-    .miniLink{
-      font-size: 13px;
-      text-decoration:none;
-      font-weight:800;
-      letter-spacing:.02em;
-      padding: 9px 10px;
-      border-radius: 12px;
-      border: 1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.03);
-      transition: background .15s ease, border-color .15s ease;
-    }
-    .miniLink:hover{background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.22)}
-
     .split{
       display:grid;
       grid-template-columns: 1fr 1fr;
@@ -408,6 +344,20 @@
     .panel h5{margin:0 0 10px; font-size: 16px; letter-spacing:.08em; text-transform:uppercase;}
     .panel p{margin:0; color: var(--muted); line-height:1.7; font-size: 14px;}
 
+    .links{display:flex; gap:10px; flex-wrap:wrap;}
+    .miniLink{
+      font-size: 13px;
+      text-decoration:none;
+      font-weight:800;
+      letter-spacing:.02em;
+      padding: 9px 10px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.03);
+      transition: background .15s ease, border-color .15s ease;
+    }
+    .miniLink:hover{background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.22)}
+
     footer{
       padding: 26px 0 40px;
       border-top: 1px solid var(--line);
@@ -415,7 +365,7 @@
       font-size: 12px;
     }
 
-    .footerRow{display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;}
+    .footerRow{display:flex; align-items:flex-start; justify-content:space-between; gap:12px; flex-wrap:wrap;}
 
     /* small "glitch" highlight on hover */
     .glitch{
@@ -435,7 +385,6 @@
     /* responsive */
     @media (max-width: 980px){
       .heroGrid{grid-template-columns: 1fr;}
-      .grid3{grid-template-columns: 1fr;}
       .split{grid-template-columns: 1fr;}
     }
 
@@ -451,7 +400,6 @@
   <div class="wrap">
     <div class="topbar">
       <a class="brand" href="#top" aria-label="ijneb studios home">
-        <!-- NEW LOGO: signal ring + three project nodes + cable-styled 'j' vibe -->
         <svg viewBox="0 0 64 64" role="img" aria-label="ijneb studios logo">
           <defs>
             <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
@@ -462,16 +410,10 @@
           </defs>
           <rect x="0" y="0" width="64" height="64" rx="16" fill="rgba(255,255,255,.03)" stroke="rgba(255,255,255,.10)" />
           <circle cx="32" cy="32" r="18" fill="none" stroke="url(#g)" stroke-width="2.6" opacity=".95"/>
-
-          <!-- waveform inside -->
           <path d="M16 34 C20 24, 22 44, 26 34 S32 44, 36 34 S42 24, 46 34 S50 44, 52 34" fill="none" stroke="rgba(255,255,255,.85)" stroke-width="2" stroke-linecap="round"/>
-
-          <!-- three nodes: Panda, HiPatheticalAl, MINDSHANK -->
           <circle cx="47" cy="20" r="3.2" fill="#00ff88" />
           <circle cx="49" cy="44" r="3.2" fill="#00ddff" />
           <circle cx="20" cy="44" r="3.2" fill="#ff6600" />
-
-          <!-- connecting lines = studio signing/collective -->
           <path d="M32 32 L47 20" stroke="rgba(255,255,255,.18)" stroke-width="1.8" />
           <path d="M32 32 L49 44" stroke="rgba(255,255,255,.18)" stroke-width="1.8" />
           <path d="M32 32 L20 44" stroke="rgba(255,255,255,.18)" stroke-width="1.8" />
@@ -485,6 +427,7 @@
 
       <nav aria-label="Primary">
         <a class="pill" href="artists.html" data-accent="panda"><span class="dot"></span>Artists</a>
+        <a class="pill" href="gear.html" data-accent="hipa"><span class="dot"></span>Gear</a>
         <a class="pill" href="#facility" data-accent="hipa"><span class="dot"></span>Studio</a>
         <a class="pill" href="#connect" data-accent="mind"><span class="dot"></span>Connect</a>
       </nav>
@@ -511,7 +454,7 @@
             <a class="btn" href="artists.html">Meet the artists</a>
             <a class="btn" href="#connect">Bookings and collabs</a>
           </div>
-          <div class="micro">Audio, visuals, streaming sessions. Gear-heavy, idea-first.</div>
+          <div class="micro">Audio, visuals, streaming sessions, plus multitrack podcasting.</div>
         </div>
 
         <aside class="card heroAside" aria-label="Quick facts">
@@ -522,6 +465,7 @@
               <div class="badge">recording</div>
               <div class="badge">mixing</div>
               <div class="badge">mastering</div>
+              <div class="badge">multitrack podcasting</div>
               <div class="badge">live sessions</div>
               <div class="badge">content</div>
             </div>
@@ -589,7 +533,7 @@
           <h5>What this place is</h5>
           <p>
             A production room that stays ready. Guitars, bass, keys, electronic drums, vocal chain, and a multi-cam setup for live sessions and content.
-            The goal is momentum: ideas can be captured before they evaporate.
+            Multitrack podcasting is available, with individual headphone mixes for guests.
           </p>
         </div>
         <div class="panel">
@@ -607,34 +551,40 @@
     <div class="wrap">
       <div class="sectionHead">
         <h3>Connect</h3>
-        <p>Links that matter. No social media scavenger hunt required.</p>
+        <p>Everything in one place. No social media scavenger hunt required.</p>
       </div>
 
       <div class="split">
         <div class="panel">
-          <h5>BandLab</h5>
-          <p>
-            The main hub for releases and works in progress.
-            <br/><br/>
-            <a class="miniLink" href="https://www.bandlab.com/ijnebstudios" target="_blank" rel="noopener">Open ijneb studios on BandLab</a>
-          </p>
+          <h5>Links</h5>
+          <p style="margin-bottom:12px;">Find us, message us, or book time.</p>
+          <div class="links">
+            <a class="miniLink" href="https://instagram.com/ijnebstudios" target="_blank" rel="noopener">Instagram @ijnebstudios</a>
+            <a class="miniLink" href="https://www.bandlab.com/ijnebstudios" target="_blank" rel="noopener">BandLab @ijnebstudios</a>
+            <a class="miniLink" href="https://twitch.tv/ijnebstudios" target="_blank" rel="noopener">Twitch @ijnebstudios</a>
+            <span class="miniLink" style="opacity:.7; cursor:default">Discord @</span>
+            <a class="miniLink" href="mailto:hello@ijnebstudios.com">hello@ijnebstudios.com</a>
+          </div>
         </div>
+
         <div class="panel">
-          <h5>Bookings and collabs</h5>
+          <h5>Bookings</h5>
           <p>
-            Add your contact method here. Email is usually best.
-            <br/><br/>
-            <span style="color: var(--muted2)">example:</span> hello@ijnebstudios.com
+            Use a Google Form for bookings. It emails you, and logs responses into a Sheet in Google Workspace.
+          </p>
+          <p style="margin-top:12px; color: var(--muted2);">
+            Add the embed link here when ready: <span style="opacity:.9">https://docs.google.com/forms/d/e/1FAIpQLSfl0hNDcsJDNUw5bRVd716NL3nhp-OhLErsFSenjFWcSOim_Q/viewform?usp=header</span>
           </p>
         </div>
       </div>
 
       <footer>
         <div class="footerRow">
-          <div>© 2026 ijneb studios · Melbourne, AU</div>
+          <div>© 2026 ijneb studios · Melbourne, AU<br/>ABN 68&nbsp;827&nbsp;519&nbsp;129</div>
           <div style="display:flex; gap:10px; flex-wrap:wrap;">
             <a class="miniLink" href="#top">Top</a>
             <a class="miniLink" href="artists.html">Artists</a>
+            <a class="miniLink" href="gear.html">Gear</a>
             <a class="miniLink" href="#facility">Studio</a>
           </div>
         </div>

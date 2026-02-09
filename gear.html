@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gear · ijneb studios</title>
+  <meta name="description" content="Studio gear available at ijneb studios in Melbourne, including multitrack podcasting, recording, and streaming." />
+
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+
+  <style>
+    :root{
+      --bg:#050508;
+      --text:#ffffff;
+      --muted:#dde0ee;
+      --muted2:#b9bfd6;
+      --line:rgba(255,255,255,.22);
+      --radius:22px;
+      --shadow:0 22px 70px rgba(0,0,0,.7);
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif;
+      background:var(--bg);
+      color:var(--text);
+    }
+    a{color:inherit}
+    .wrap{max-width:980px;margin:0 auto;padding:0 20px}
+
+    header{
+      position:fixed;
+      top:0; left:0; right:0;
+      background:rgba(5,5,8,.92);
+      backdrop-filter:blur(10px);
+      border-bottom:1px solid var(--line);
+      z-index:10;
+    }
+    .topbar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:14px 0;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+    .brand{
+      text-decoration:none;
+      font-weight:800;
+      letter-spacing:.08em;
+      text-transform:lowercase;
+    }
+    nav{display:flex; gap:10px; flex-wrap:wrap;}
+    .pill{
+      padding:9px 12px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.06);
+      text-decoration:none;
+      font-size:13px;
+      font-weight:750;
+    }
+
+    main{padding:120px 0 40px}
+    h1{font-size:clamp(36px,4vw,52px); margin:0 0 10px;}
+    p{color:var(--muted); line-height:1.7; margin:0 0 22px;}
+
+    .card{
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.05);
+      border-radius:var(--radius);
+      padding:18px;
+      box-shadow:var(--shadow);
+      margin-bottom:16px;
+    }
+    h2{margin:0 0 10px; font-size:18px; letter-spacing:.08em; text-transform:uppercase;}
+    ul{margin:0; padding-left:18px; color:var(--muted); line-height:1.8;}
+    footer{
+      margin-top:26px;
+      padding-top:18px;
+      border-top:1px solid var(--line);
+      color:var(--muted2);
+      font-size:12px;
+      line-height:1.6;
+    }
+  </style>
+</head>
+
+<body>
+<header>
+  <div class="wrap">
+    <div class="topbar">
+      <a class="brand" href="index.html">ijneb studios</a>
+      <nav>
+        <a class="pill" href="index.html">Home</a>
+        <a class="pill" href="artists.html">Artists</a>
+        <a class="pill" href="index.html#connect">Connect</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <h1>Gear</h1>
+    <p>
+      A studio that stays ready. Recording, streaming, and multitrack podcasting with individual monitoring.
+    </p>
+
+    <div class="card">
+      <h2>Podcasting</h2>
+      <ul>
+        <li>Multitrack podcast recording</li>
+        <li>4 lapel mics</li>
+        <li>8 channel headphone output for up to 8 individual headsets while recording</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Streaming and video</h2>
+      <ul>
+        <li>Dedicated OBS streaming PC</li>
+        <li>Multi-camera live session workflow</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Pedals and extras</h2>
+      <ul>
+        <li>BOSS ME-20 pedal</li>
+      </ul>
+    </div>
+
+    <footer>
+      © 2026 ijneb studios · Melbourne, AU<br/>
+      ABN 68&nbsp;827&nbsp;519&nbsp;129
+    </footer>
+  </div>
+</main>
+</body>
+</html>
