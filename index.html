@@ -1,440 +1,266 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ijneb studios</title>
-  <meta name="description" content="Melbourne-based music production studio and creative collective. Panda Strike, HiPatheticalAl, MINDSHANK." />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ijneb studios</title>
 
-  <link rel="icon" type="image/png" href="/favicon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
-
+  <link rel="icon" type="image/png" href="favicon-32.png" sizes="32x32" />
+  <link rel="icon" type="image/png" href="favicon-16.png" sizes="16x16" />
+  <link rel="shortcut icon" type="image/png" href="fishbowlheadsquare.png" />
+  <link rel="apple-touch-icon" href="favicon.png" />
+<meta name="description" content="Melbourne-based music production studio and creative collective. Panda Strike, HiPatheticalAl, MINDSHANK." />
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
   <style>
-    :root{
-      --bg:#07070a;
-      --panel:#10121a;
-      --panel2:#0b0c11;
-      --text:#f7f8fb;
-      /* boost readability */
-      --muted:#e0e3f2;
-      --muted2:#bcc2d8;
-      --line:rgba(255,255,255,.14);
-      --glow:rgba(0,255,136,.22);
 
-      /* Project colours */
-      --panda:#00ff88;   /* loud, sharp */
-      --hipa:#00ddff;    /* digital */
-      --mind:#ff6600;    /* collective, warm */
+:root{
+  --bg:#07070a;
+  --panel:#10121a;
+  --panel2:#0b0c11;
+  --text:#f7f8fb;
+  --muted:#e0e3f2;
+  --muted2:#bcc2d8;
+  --line:rgba(255,255,255,.14);
 
-      --radius:22px;
-      --shadow: 0 22px 70px rgba(0,0,0,.60);
-    }
+  --panda:#00ff88;
+  --hipa:#00ddff;
+  --mind:#ff6600;
 
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif;
-      background: radial-gradient(1200px 700px at 12% 0%, rgba(0,255,136,.10), transparent 60%),
-                  radial-gradient(900px 650px at 92% 30%, rgba(255,102,0,.09), transparent 55%),
-                  radial-gradient(900px 650px at 55% 95%, rgba(0,221,255,.08), transparent 55%),
-                  var(--bg);
-      color:var(--text);
-      overflow-x:hidden;
-    }
+  --radius:22px;
+  --shadow: 0 22px 70px rgba(0,0,0,.60);
+}
 
-    /* subtle grid */
-    body::before{
-      content:"";
-      position:fixed;
-      inset:0;
-      background:
-        linear-gradient(to right, rgba(255,255,255,.06) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(255,255,255,.06) 1px, transparent 1px);
-      background-size: 48px 48px;
-      opacity:.10;
-      pointer-events:none;
-      z-index:-2;
-    }
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif;
+  background: radial-gradient(1200px 700px at 12% 0%, rgba(0,255,136,.10), transparent 60%),
+              radial-gradient(900px 650px at 92% 30%, rgba(255,102,0,.09), transparent 55%),
+              radial-gradient(900px 650px at 55% 95%, rgba(0,221,255,.08), transparent 55%),
+              var(--bg);
+  color:var(--text);
+  overflow-x:hidden;
+}
 
-    /* noise */
-    body::after{
-      content:"";
-      position:fixed;
-      inset:-40px;
-      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.18'/%3E%3C/svg%3E");
-      opacity:.06;
-      mix-blend-mode:overlay;
-      pointer-events:none;
-      z-index:-1;
-      animation: drift 12s linear infinite;
-    }
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:
+    linear-gradient(to right, rgba(255,255,255,.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,.06) 1px, transparent 1px);
+  background-size: 48px 48px;
+  opacity:.10;
+  pointer-events:none;
+  z-index:-2;
+}
 
-    @keyframes drift{
-      0%{transform:translate3d(0,0,0)}
-      50%{transform:translate3d(-18px, 12px,0)}
-      100%{transform:translate3d(0,0,0)}
-    }
+a{color:inherit}
+.wrap{max-width:1180px; margin:0 auto; padding:0 20px;}
 
-    a{color:inherit}
+header{
+  position:fixed;
+  top:0; left:0; right:0;
+  backdrop-filter: blur(12px);
+  background: rgba(7,7,10,.78);
+  border-bottom: 1px solid var(--line);
+  z-index:50;
+}
 
-    .wrap{max-width:1180px; margin:0 auto; padding:0 20px;}
+.topbar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  padding:14px 0;
+}
 
-    header{
-      position:fixed;
-      top:0;
-      left:0;
-      right:0;
-      backdrop-filter: blur(12px);
-      background: rgba(7,7,10,.78);
-      border-bottom: 1px solid var(--line);
-      z-index:50;
-    }
+.brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  text-decoration:none;
+  user-select:none;
+}
+.brand svg{width:44px; height:44px; filter: drop-shadow(0 10px 18px rgba(0,255,136,.12));}
+.brand .word{display:flex; flex-direction:column; line-height:1.05;}
+.brand .word strong{font-size:16px; letter-spacing:.08em; text-transform:lowercase}
+.brand .word span{font-size:12px; color:var(--muted); letter-spacing:.06em}
 
-    .topbar{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:16px;
-      padding:14px 0;
-    }
+nav{display:flex; gap:8px; align-items:center; flex-wrap:wrap;}
 
-    .brand{
-      display:flex;
-      align-items:center;
-      gap:12px;
-      text-decoration:none;
-      user-select:none;
-    }
+.pill{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:10px 12px;
+  border-radius:999px;
+  border:1px solid var(--line);
+  background: rgba(255,255,255,.05);
+  text-decoration:none;
+  font-weight:650;
+  font-size:13px;
+  letter-spacing:.03em;
+  transition: transform .15s ease, border-color .15s ease, background .15s ease;
+}
+.pill:hover{transform: translateY(-1px); border-color: rgba(255,255,255,.22); background: rgba(255,255,255,.05)}
+.pill .dot{width:8px; height:8px; border-radius:999px; background: rgba(255,255,255,.35)}
+.pill[data-accent="panda"] .dot{background: var(--panda)}
+.pill[data-accent="hipa"] .dot{background: var(--hipa)}
+.pill[data-accent="mind"] .dot{background: var(--mind)}
 
-    .brand svg{width:44px; height:44px; filter: drop-shadow(0 10px 18px rgba(0,255,136,.12));}
+.card{
+  border: 1px solid var(--line);
+  background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(0,0,0,.18));
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow:hidden;
+}
 
-    .brand .word{
-      display:flex;
-      flex-direction:column;
-      line-height:1.05;
-    }
-    .brand .word strong{font-size:16px; letter-spacing:.08em; text-transform:lowercase}
-    .brand .word span{font-size:12px; color:var(--muted); letter-spacing:.06em}
+.section{padding: 18px 0 34px;}
+.sectionHead{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:16px;
+  margin: 18px 0 14px;
+}
+.sectionHead h3{
+  margin:0;
+  font-size: 18px;
+  letter-spacing:.10em;
+  text-transform:uppercase;
+  color: var(--text);
+}
+.sectionHead p{margin:0; color: var(--muted); font-size: 13px; line-height: 1.5; max-width: 60ch;}
 
-    nav{
-      display:flex;
-      gap:8px;
-      align-items:center;
-      flex-wrap:wrap;
-    }
+.split{display:grid; grid-template-columns: 1fr 1fr; gap: 14px;}
+.panel{
+  border: 1px solid var(--line);
+  background: rgba(0,0,0,.42);
+  border-radius: var(--radius);
+  padding: 18px;
+}
+.panel h5{margin:0 0 10px; font-size: 16px; letter-spacing:.08em; text-transform:uppercase;}
+.panel p{margin:0; color: var(--muted); line-height:1.7; font-size: 14px;}
 
-    .pill{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      padding:10px 12px;
-      border-radius:999px;
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.05);
-      text-decoration:none;
-      font-weight:650;
-      font-size:13px;
-      letter-spacing:.03em;
-      transition: transform .15s ease, border-color .15s ease, background .15s ease;
-    }
-    .pill:hover{transform: translateY(-1px); border-color: rgba(255,255,255,.22); background: rgba(255,255,255,.05)}
+.miniLink{
+  font-size: 13px;
+  text-decoration:none;
+  font-weight:800;
+  letter-spacing:.02em;
+  padding: 9px 10px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,.14);
+  background: rgba(255,255,255,.03);
+  transition: background .15s ease, border-color .15s ease;
+  display:inline-block;
+}
+.miniLink:hover{background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.22)}
 
-    .pill .dot{width:8px; height:8px; border-radius:999px; background: rgba(255,255,255,.35)}
-    .pill[data-accent="panda"] .dot{background: var(--panda)}
-    .pill[data-accent="hipa"] .dot{background: var(--hipa)}
-    .pill[data-accent="mind"] .dot{background: var(--mind)}
+footer{
+  padding: 18px;
+  border-top: 1px solid var(--line);
+  color: var(--muted2);
+  font-size: 12px;
+  line-height:1.6;
+}
 
-    .hero{
-      padding: 112px 0 24px;
-    }
+@media (max-width: 980px){
+  .split{grid-template-columns: 1fr;}
+}
+@media (max-width: 520px){
+  .brand .word span{display:none}
+  .pill{padding: 9px 10px}
+}
 
-    .heroGrid{
-      display:grid;
-      grid-template-columns: 1.2fr .8fr;
-      gap:20px;
-      align-items:stretch;
-    }
+.hero{padding: 112px 0 24px;}
+.heroGrid{display:grid;grid-template-columns: 1.2fr .8fr;gap:20px;align-items:stretch;}
+.heroMain{padding:26px;position:relative;min-height:360px;}
+.kicker{display:inline-flex;gap:10px;align-items:center;font-weight:700;letter-spacing:.18em;text-transform:uppercase;font-size:11px;color:var(--muted);}
+.kicker .spark{width:10px;height:10px;border-radius:999px;background: radial-gradient(circle at 30% 30%, #fff, var(--panda));box-shadow: 0 0 0 6px rgba(0,255,136,.12);}
+h1{margin:14px 0 12px;font-size: clamp(38px, 4.8vw, 64px);letter-spacing:-.03em;line-height:1.02;}
+.sub{margin:0 0 18px;color:var(--muted);text-shadow:0 1px 0 rgba(0,0,0,.35);font-size:16px;line-height:1.7;max-width:58ch;}
+.ctaRow{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px;}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:12px 14px;border-radius:14px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.04);text-decoration:none;font-weight:750;letter-spacing:.02em;transition:transform .15s ease, background .15s ease, border-color .15s ease, box-shadow .15s ease;font-size:14px;}
+.btn:hover{transform:translateY(-1px);background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.22)}
+.btnPrimary{border-color:rgba(0,255,136,.35);background: linear-gradient(90deg, rgba(0,255,136,.18), rgba(0,221,255,.12));box-shadow: 0 18px 40px rgba(0,255,136,.08);}
+.btnPrimary:hover{border-color:rgba(0,255,136,.55)}
+.micro{margin-top:14px;color:var(--muted2);font-size:12px;letter-spacing:.03em;}
+.heroAside{display:flex;flex-direction:column;}
+.asideTop{padding:18px;border-bottom:1px solid var(--line);background: linear-gradient(180deg, rgba(255,102,0,.10), rgba(255,255,255,0));}
+.asideTop h2{margin:0 0 8px;font-size:16px;letter-spacing:.08em;text-transform:uppercase;}
+.badgeRow{display:flex;gap:8px;flex-wrap:wrap;}
+.badge{padding:8px 10px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.06);font-size:12px;color:var(--text);font-weight:800;letter-spacing:.03em;}
+.asideBottom{padding:18px;display:grid;gap:10px;}
+.metric{border:1px solid var(--line);background:rgba(0,0,0,.42);border-radius:16px;padding:12px;}
+.metric .label{color:var(--muted);font-size:12px;letter-spacing:.06em;text-transform:uppercase;}
+.metric .value{margin-top:6px;font-weight:900;font-size:15px;letter-spacing:.02em;}
+.bw .panel{background: rgba(0,0,0,.55);border-color: rgba(255,255,255,.18);}
+.bw .panel p{color: var(--muted);}
+.grid3{display:grid;grid-template-columns: repeat(3, 1fr); gap: 14px;}
+.glitch{position:absolute;inset:auto 0 0 0;height:90px;opacity:.5;background:linear-gradient(90deg, transparent 0 10%, rgba(255,255,255,.06) 10% 12%, transparent 12% 22%, rgba(255,255,255,.04) 22% 26%, transparent 26% 100%);mix-blend-mode:screen;transform: translateY(110%);transition: transform .18s ease;pointer-events:none;}
+.heroMain:hover .glitch{transform: translateY(0%)}
+.socialList{margin:0;padding-left:18px;}
+.socialList li{margin:6px 0;}
+.embedWrap{margin-top:14px;}
+@media (max-width: 980px){.heroGrid{grid-template-columns:1fr;}}
 
-    .card{
+    .connectArt{
+      width:100%;
+      max-width:420px;
+      height:auto;
+      border-radius: 18px;
       border: 1px solid var(--line);
-      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(0,0,0,.18));
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      overflow:hidden;
-    }
-
-    .heroMain{
-      padding: 26px;
-      position:relative;
-      min-height: 360px;
-    }
-
-    .kicker{
-      display:inline-flex;
-      gap:10px;
-      align-items:center;
-      font-weight:700;
-      letter-spacing:.18em;
-      text-transform:uppercase;
-      font-size:11px;
-      color: var(--muted);
-    }
-
-    .kicker .spark{
-      width:10px; height:10px; border-radius:999px;
-      background: radial-gradient(circle at 30% 30%, #fff, var(--panda));
-      box-shadow: 0 0 0 6px rgba(0,255,136,.12);
-    }
-
-    h1{
-      margin:14px 0 12px;
-      font-size: clamp(38px, 4.8vw, 64px);
-      letter-spacing:-.03em;
-      line-height: 1.02;
-    }
-
-    .sub{
-      margin: 0 0 18px;
-      color: var(--muted);
-      text-shadow: 0 1px 0 rgba(0,0,0,.35);
-      font-size: 16px;
-      line-height: 1.7;
-      max-width: 58ch;
-    }
-
-    .ctaRow{display:flex; flex-wrap:wrap; gap:10px; margin-top: 18px;}
-
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap:10px;
-      padding: 12px 14px;
-      border-radius: 14px;
-      border: 1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.04);
-      text-decoration:none;
-      font-weight:750;
-      letter-spacing:.02em;
-      transition: transform .15s ease, background .15s ease, border-color .15s ease, box-shadow .15s ease;
-      font-size: 14px;
-    }
-    .btn:hover{transform: translateY(-1px); background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.22)}
-
-    .btnPrimary{
-      border-color: rgba(0,255,136,.35);
-      background: linear-gradient(90deg, rgba(0,255,136,.18), rgba(0,221,255,.12));
-      box-shadow: 0 18px 40px rgba(0,255,136,.08);
-    }
-
-    .btnPrimary:hover{border-color: rgba(0,255,136,.55)}
-
-    .micro{
+      background: rgba(255,255,255,.02);
+      box-shadow: 0 18px 50px rgba(0,0,0,.55);
       margin-top: 14px;
-      color: var(--muted2);
-      font-size: 12px;
-      letter-spacing:.03em;
-      line-height:1.6;
+      display:block;
     }
 
-    .heroAside{
-      display:flex;
-      flex-direction:column;
-    }
-
-    .asideTop{
-      padding: 18px;
-      border-bottom: 1px solid var(--line);
-      background: linear-gradient(180deg, rgba(255,102,0,.10), rgba(255,255,255,0));
-    }
-
-    .asideTop h2{
-      margin: 0 0 8px;
-      font-size: 16px;
-      letter-spacing:.08em;
-      text-transform:uppercase;
-    }
-
-    .badgeRow{display:flex; gap:8px; flex-wrap:wrap;}
-    .badge{
-      padding: 8px 10px;
-      border-radius: 999px;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,.06);
-      font-size: 12px;
-      color: var(--text);
-      font-weight:800;
-      letter-spacing:.03em;
-    }
-
-    .asideBottom{padding: 18px; display:grid; gap:10px;}
-
-    .metric{
-      border:1px solid var(--line);
-      background: rgba(0,0,0,.42);
-      border-radius: 16px;
-      padding: 12px;
-    }
-
-    .metric .label{color: var(--muted); font-size: 12px; letter-spacing:.06em; text-transform:uppercase;}
-    .metric .value{margin-top:6px; font-weight:900; font-size: 15px; letter-spacing:.02em;}
-
-    .section{padding: 18px 0 34px;}
-
-    /* Black & white mode for lower sections */
-    .bw .sectionHead h3,
-    .bw .sectionHead p,
-    .bw .panel h5,
-    .bw .panel p,
-    .bw .miniLink{color: var(--text);}
-
-    .bw .panel{
-      background: rgba(0,0,0,.55);
-      border-color: rgba(255,255,255,.18);
-    }
-
-    .bw .panel p{color: var(--muted);}
-
-    .bw .miniLink{
-      border-color: rgba(255,255,255,.20);
-      background: rgba(255,255,255,.06);
-    }
-
-    .bw .miniLink:hover{
-      background: rgba(255,255,255,.10);
-      border-color: rgba(255,255,255,.30);
-    }
-
-    .bw footer{border-top-color: rgba(255,255,255,.18);}
-
-
-    .sectionHead{
-      display:flex;
-      align-items:flex-end;
-      justify-content:space-between;
-      gap:16px;
-      margin: 18px 0 14px;
-    }
-
-    .sectionHead h3{
-      margin:0;
-      font-size: 18px;
-      letter-spacing:.10em;
-      text-transform:uppercase;
-      color: var(--text);
-    }
-
-    .sectionHead p{margin:0; color: var(--muted); font-size: 13px; line-height: 1.5; max-width: 60ch;}
-
-    .split{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
-    }
-
-    .panel{
-      border: 1px solid var(--line);
-      background: rgba(0,0,0,.42);
-      border-radius: var(--radius);
-      padding: 18px;
-    }
-
-    .panel h5{margin:0 0 10px; font-size: 16px; letter-spacing:.08em; text-transform:uppercase;}
-    .panel p{margin:0; color: var(--muted); line-height:1.7; font-size: 14px;}
-
-    .links{display:flex; gap:10px; flex-wrap:wrap;}
-    .miniLink{
-      font-size: 13px;
-      text-decoration:none;
-      font-weight:800;
-      letter-spacing:.02em;
-      padding: 9px 10px;
-      border-radius: 12px;
-      border: 1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.03);
-      transition: background .15s ease, border-color .15s ease;
-    }
-    .miniLink:hover{background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.22)}
-
-    footer{
-      padding: 26px 0 40px;
-      border-top: 1px solid var(--line);
-      color: var(--muted2);
-      font-size: 12px;
-    }
-
-    .footerRow{display:flex; align-items:flex-start; justify-content:space-between; gap:12px; flex-wrap:wrap;}
-
-    /* small "glitch" highlight on hover */
-    .glitch{
-      position:absolute;
-      inset:auto 0 0 0;
-      height: 90px;
-      opacity:.5;
-      background:
-        linear-gradient(90deg, transparent 0 10%, rgba(255,255,255,.06) 10% 12%, transparent 12% 22%, rgba(255,255,255,.04) 22% 26%, transparent 26% 100%);
-      mix-blend-mode: screen;
-      transform: translateY(110%);
-      transition: transform .18s ease;
-      pointer-events:none;
-    }
-    .heroMain:hover .glitch{transform: translateY(0%)}
-
-    /* responsive */
-    @media (max-width: 980px){
-      .heroGrid{grid-template-columns: 1fr;}
-      .split{grid-template-columns: 1fr;}
-    }
-
-    @media (max-width: 520px){
-      .brand .word span{display:none}
-      .pill{padding: 9px 10px}
-    }
   </style>
+<meta name="theme-color" content="#07070a">
 </head>
 <body>
-
 <header>
   <div class="wrap">
     <div class="topbar">
-      <a class="brand" href="#top" aria-label="ijneb studios home">
+      <a class="brand" href="index.html?v=2026-02-09-9" aria-label="ijneb studios home">
         <svg viewBox="0 0 64 64" role="img" aria-label="ijneb studios logo">
-          <defs>
-            <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0" stop-color="#00ff88" stop-opacity="1" />
-              <stop offset="0.55" stop-color="#00ddff" stop-opacity="1" />
-              <stop offset="1" stop-color="#ff6600" stop-opacity="1" />
-            </linearGradient>
-          </defs>
-          <rect x="0" y="0" width="64" height="64" rx="16" fill="rgba(255,255,255,.03)" stroke="rgba(255,255,255,.10)" />
-          <circle cx="32" cy="32" r="18" fill="none" stroke="url(#g)" stroke-width="2.6" opacity=".95"/>
-          <path d="M16 34 C20 24, 22 44, 26 34 S32 44, 36 34 S42 24, 46 34 S50 44, 52 34" fill="none" stroke="rgba(255,255,255,.85)" stroke-width="2" stroke-linecap="round"/>
-          <circle cx="47" cy="20" r="3.2" fill="#00ff88" />
-          <circle cx="49" cy="44" r="3.2" fill="#00ddff" />
-          <circle cx="20" cy="44" r="3.2" fill="#ff6600" />
-          <path d="M32 32 L47 20" stroke="rgba(255,255,255,.18)" stroke-width="1.8" />
-          <path d="M32 32 L49 44" stroke="rgba(255,255,255,.18)" stroke-width="1.8" />
-          <path d="M32 32 L20 44" stroke="rgba(255,255,255,.18)" stroke-width="1.8" />
-        </svg>
-
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#00ff88" stop-opacity="1" />
+      <stop offset="0.55" stop-color="#00ddff" stop-opacity="1" />
+      <stop offset="1" stop-color="#ff6600" stop-opacity="1" />
+    </linearGradient>
+  </defs>
+  <rect x="0" y="0" width="64" height="64" rx="16" fill="rgba(255,255,255,.03)" stroke="rgba(255,255,255,.10)" />
+  <circle cx="32" cy="32" r="18" fill="none" stroke="url(#g)" stroke-width="2.6" opacity=".95"/>
+  <path d="M16 34 C20 24, 22 44, 26 34 S32 44, 36 34 S42 24, 46 34 S50 44, 52 34" fill="none" stroke="rgba(255,255,255,.85)" stroke-width="2" stroke-linecap="round"/>
+  <circle cx="47" cy="20" r="3.2" fill="#00ff88" />
+  <circle cx="49" cy="44" r="3.2" fill="#00ddff" />
+  <circle cx="20" cy="44" r="3.2" fill="#ff6600" />
+  <path d="M32 32 L47 20" stroke="rgba(255,255,255,.18)" stroke-width="1.8" />
+  <path d="M32 32 L49 44" stroke="rgba(255,255,255,.18)" stroke-width="1.8" />
+  <path d="M32 32 L20 44" stroke="rgba(255,255,255,.18)" stroke-width="1.8" />
+</svg>
         <div class="word">
           <strong>ijneb studios</strong>
           <span>production · collective · melbourne</span>
         </div>
       </a>
-
       <nav aria-label="Primary">
-        <a class="pill" href="artists.html" data-accent="panda"><span class="dot"></span>Artists</a>
-        <a class="pill" href="gear.html" data-accent="hipa"><span class="dot"></span>Gear</a>
-        <a class="pill" href="#facility" data-accent="hipa"><span class="dot"></span>Studio</a>
-        <a class="pill" href="#connect" data-accent="mind"><span class="dot"></span>Connect</a>
+        <a class="pill" href="artists.html?v=2026-02-09-9" data-accent="panda"><span class="dot"></span>Artists</a>
+        <a class="pill" href="gear.html?v=2026-02-09-9" data-accent="hipa"><span class="dot"></span>Gear</a>
+        <a class="pill" href="index.html?v=2026-02-09-9#facility" data-accent="hipa"><span class="dot"></span>Studio</a>
+        <a class="pill" href="index.html?v=2026-02-09-9#connect" data-accent="mind"><span class="dot"></span>Connect</a>
       </nav>
     </div>
   </div>
 </header>
-
 <main id="top">
   <section class="hero">
     <div class="wrap">
@@ -442,16 +268,14 @@
         <div class="card heroMain">
           <div class="glitch" aria-hidden="true"></div>
           <div class="kicker"><span class="spark"></span><span>Melbourne studio, three in-house projects, more incoming</span></div>
-          <h1>Make noise.
-            <br/>Make bangers.
-            <br/>Make weird art.</h1>
+          <h1>Make noise.<br/>Make bangers.<br/>Make weird art.</h1>
           <p class="sub">
             ijneb studios is the home base for production, writing, recording, and collaborative experiments.
             The artists are part label, part playground, part ongoing group chat that escaped into reality.
           </p>
           <div class="ctaRow">
             <a class="btn btnPrimary" href="https://www.bandlab.com/ijnebstudios" target="_blank" rel="noopener">BandLab hub</a>
-            <a class="btn" href="artists.html">Meet the artists</a>
+            <a class="btn" href="artists.html?v=2026-02-09-9">Meet the artists</a>
             <a class="btn" href="#connect">Bookings and collabs</a>
           </div>
           <div class="micro">Audio, visuals, streaming sessions, plus multitrack podcasting.</div>
@@ -467,7 +291,6 @@
               <div class="badge">mastering</div>
               <div class="badge">multitrack podcasting</div>
               <div class="badge">live sessions</div>
-              <div class="badge">content</div>
             </div>
           </div>
           <div class="asideBottom">
@@ -501,9 +324,9 @@
           <h5>Current artists</h5>
           <p style="margin-bottom:12px;">Three projects, three lanes, one studio.</p>
           <div class="links">
-            <a class="miniLink" href="artists.html#panda">Panda Strike</a>
-            <a class="miniLink" href="artists.html#hipa">HiPatheticalAl</a>
-            <a class="miniLink" href="artists.html#mind">MINDSHANK</a>
+            <a class="miniLink" href="artists.html?v=2026-02-09-9#panda">Panda Strike</a>
+            <a class="miniLink" href="artists.html?v=2026-02-09-9#hipa">HiPatheticalAl</a>
+            <a class="miniLink" href="artists.html?v=2026-02-09-9#mind">MINDSHANK</a>
           </div>
         </div>
 
@@ -514,7 +337,7 @@
             If you are still finding your sound, that is fine too, but be honest about it.
             <br/><br/>
             <a class="miniLink" href="#connect">Contact details</a>
-            <a class="miniLink" href="artists.html">Open Artists page</a>
+            <a class="miniLink" href="artists.html?v=2026-02-09-9">Open Artists page</a>
           </p>
         </div>
       </div>
@@ -558,40 +381,40 @@
         <div class="panel">
           <h5>Links</h5>
           <p style="margin-bottom:12px;">Find us, message us, or book time.</p>
-          <div class="links">
-            <a class="miniLink" href="https://instagram.com/ijnebstudios" target="_blank" rel="noopener">Instagram @ijnebstudios</a>
-            <a class="miniLink" href="https://www.bandlab.com/ijnebstudios" target="_blank" rel="noopener">BandLab @ijnebstudios</a>
-            <a class="miniLink" href="https://twitch.tv/ijnebstudios" target="_blank" rel="noopener">Twitch @ijnebstudios</a>
-            <span class="miniLink" style="opacity:.7; cursor:default">Discord @</span>
-            <a class="miniLink" href="mailto:hello@ijnebstudios.com">hello@ijnebstudios.com</a>
-          </div>
+          <ul class="socialList">
+            <li>Instagram: <a class="miniLink" href="https://instagram.com/ijnebstudios" target="_blank" rel="noopener">@ijnebstudios</a></li>
+            <li>BandLab: <a class="miniLink" href="https://www.bandlab.com/ijnebstudios" target="_blank" rel="noopener">@ijnebstudios</a></li>
+            <li>Twitch: <a class="miniLink" href="https://twitch.tv/ijnebstudios" target="_blank" rel="noopener">@ijnebstudios</a></li>
+            <li>Discord: <a class="miniLink" href="https://discord.gg/ijnebstudios" target="_blank" rel="noopener" title="Discord - Meet other musicians or showcase your music!">@ijnebstudios</a></li>
+            <li>Email: <a class="miniLink" href="mailto:hello@ijnebstudios.com">hello@ijnebstudios.com</a></li>
+          </ul>
+          <img class="connectArt" src="images/fishbowlheadsquare.png" alt="ijneb studios fishbowl head" loading="lazy" />
+
         </div>
 
         <div class="panel">
           <h5>Bookings</h5>
-          <p>
-            Use a Google Form for bookings. It emails you, and logs responses into a Sheet in Google Workspace.
-          </p>
-          <p style="margin-top:12px; color: var(--muted2);">
-            Add the embed link here when ready: <span style="opacity:.9">YOUR_FORM_EMBED_URL</span>
-          </p>
+          <p>Use the form below. It emails you and logs submissions in Google Workspace automatically.</p>
+          <div class="embedWrap">
+            <iframe
+              title="Bookings"
+              src="https://docs.google.com/forms/d/e/1FAIpQLSfl0hNDcsJDNUw5bRVd716NL3nhp-OhLErsFSenjFWcSOim_Q/viewform?embedded=true"
+              width="100%"
+              height="740"
+              style="border:0; border-radius:14px; background:rgba(255,255,255,.03);"
+              loading="lazy">
+            </iframe>
+          </div>
         </div>
       </div>
 
       <footer>
-        <div class="footerRow">
-          <div>© 2026 ijneb studios · Melbourne, AU<br/>ABN 68&nbsp;827&nbsp;519&nbsp;129</div>
-          <div style="display:flex; gap:10px; flex-wrap:wrap;">
-            <a class="miniLink" href="#top">Top</a>
-            <a class="miniLink" href="artists.html">Artists</a>
-            <a class="miniLink" href="gear.html">Gear</a>
-            <a class="miniLink" href="#facility">Studio</a>
-          </div>
-        </div>
+        © 2026 ijneb studios · Melbourne, AU<br/>
+        ABN 68&nbsp;827&nbsp;519&nbsp;129<br/>
+        <span style="opacity:.7">site build: 2026-02-09-1</span>
       </footer>
     </div>
   </section>
 </main>
-
 </body>
 </html>

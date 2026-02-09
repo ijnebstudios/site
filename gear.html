@@ -1,225 +1,490 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Gear · ijneb studios</title>
-  <meta name="description" content="Studio gear available at ijneb studios in Melbourne, including multitrack podcasting, recording, and streaming." />
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Gear · ijneb studios</title>
+<link href="favicon-32.png" rel="icon" sizes="32x32" type="image/png"/>
+<link href="favicon-16.png" rel="icon" sizes="16x16" type="image/png"/>
+<link href="fishbowlheadsquare.png" rel="shortcut icon" type="image/png"/>
+<link href="favicon.png" rel="apple-touch-icon"/>
+<meta content="Studio gear at ijneb studios. Instruments, recording, streaming, and multitrack podcasting." name="description"/>
+<meta content="no-cache, no-store, must-revalidate" http-equiv="Cache-Control"/>
+<meta content="no-cache" http-equiv="Pragma"/>
+<meta content="0" http-equiv="Expires"/>
+<style>
 
-  <link rel="icon" type="image/png" href="/favicon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+:root{
+  --bg:#07070a;
+  --panel:#10121a;
+  --panel2:#0b0c11;
+  --text:#f7f8fb;
+  --muted:#e0e3f2;
+  --muted2:#bcc2d8;
+  --line:rgba(255,255,255,.14);
 
-  <style>
-    :root{
-      --bg:#050508;
-      --text:#ffffff;
-      --muted:#dde0ee;
-      --muted2:#b9bfd6;
-      --line:rgba(255,255,255,.22);
-      --radius:22px;
-      --shadow:0 22px 70px rgba(0,0,0,.7);
-    }
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif;
-      background:var(--bg);
-      color:var(--text);
-    }
-    a{color:inherit}
-    .wrap{max-width:980px;margin:0 auto;padding:0 20px}
+  --panda:#00ff88;
+  --hipa:#00ddff;
+  --mind:#ff6600;
 
-    header{
-      position:fixed;
-      top:0; left:0; right:0;
-      background:rgba(5,5,8,.92);
-      backdrop-filter:blur(10px);
-      border-bottom:1px solid var(--line);
-      z-index:10;
-    }
-    .topbar{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      padding:14px 0;
-      gap:12px;
-      flex-wrap:wrap;
-    }
-    .brand{
-      text-decoration:none;
-      font-weight:800;
-      letter-spacing:.08em;
-      text-transform:lowercase;
-    }
-    nav{display:flex; gap:10px; flex-wrap:wrap;}
-    .pill{
-      padding:9px 12px;
-      border-radius:999px;
-      border:1px solid var(--line);
-      background:rgba(255,255,255,.06);
-      text-decoration:none;
-      font-size:13px;
-      font-weight:750;
-    }
+  --radius:22px;
+  --shadow: 0 22px 70px rgba(0,0,0,.60);
+}
 
-    main{padding:120px 0 40px}
-    h1{font-size:clamp(36px,4vw,52px); margin:0 0 10px;}
-    p{color:var(--muted); line-height:1.7; margin:0 0 22px;}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif;
+  background: radial-gradient(1200px 700px at 12% 0%, rgba(0,255,136,.10), transparent 60%),
+              radial-gradient(900px 650px at 92% 30%, rgba(255,102,0,.09), transparent 55%),
+              radial-gradient(900px 650px at 55% 95%, rgba(0,221,255,.08), transparent 55%),
+              var(--bg);
+  color:var(--text);
+  overflow-x:hidden;
+}
 
-    .card{
-      border:1px solid var(--line);
-      background:rgba(255,255,255,.05);
-      border-radius:var(--radius);
-      padding:18px;
-      box-shadow:var(--shadow);
-      margin-bottom:16px;
-    }
-    h2{margin:0 0 10px; font-size:18px; letter-spacing:.08em; text-transform:uppercase;}
-    ul{margin:0; padding-left:18px; color:var(--muted); line-height:1.8;}
-    footer{
-      margin-top:26px;
-      padding-top:18px;
-      border-top:1px solid var(--line);
-      color:var(--muted2);
-      font-size:12px;
-      line-height:1.6;
-    }
-  
-    .brandWrap{display:flex;align-items:center;gap:12px;text-decoration:none;}
-    .brandWrap svg{width:44px;height:44px;filter: drop-shadow(0 10px 18px rgba(0,255,136,.12));}
-    .brandWrap .word{display:flex;flex-direction:column;line-height:1.05;}
-    .brandWrap .word strong{font-size:16px;letter-spacing:.08em;text-transform:lowercase;}
-    .brandWrap .word span{font-size:12px;color:var(--muted2);letter-spacing:.06em;}
-    .pill{display:inline-flex;align-items:center;gap:10px;}
-    .pill .dot{width:8px;height:8px;border-radius:999px;background:rgba(255,255,255,.35);}
-    .pill[data-accent="panda"] .dot{background: var(--panda);}
-    .pill[data-accent="hipa"] .dot{background: var(--hipa);}
-    .pill[data-accent="mind"] .dot{background: var(--mind);}
-    @media(max-width:520px){ .brandWrap .word span{display:none;} }
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:
+    linear-gradient(to right, rgba(255,255,255,.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,.06) 1px, transparent 1px);
+  background-size: 48px 48px;
+  opacity:.10;
+  pointer-events:none;
+  z-index:-2;
+}
 
-  </style>
+a{color:inherit}
+.wrap{max-width:1180px; margin:0 auto; padding:0 20px;}
+
+header{
+  position:fixed;
+  top:0; left:0; right:0;
+  backdrop-filter: blur(12px);
+  background: rgba(7,7,10,.78);
+  border-bottom: 1px solid var(--line);
+  z-index:50;
+}
+
+.topbar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  padding:14px 0;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  text-decoration:none;
+  user-select:none;
+}
+.brand svg{width:44px; height:44px; filter: drop-shadow(0 10px 18px rgba(0,255,136,.12));}
+.brand .word{display:flex; flex-direction:column; line-height:1.05;}
+.brand .word strong{font-size:16px; letter-spacing:.08em; text-transform:lowercase}
+.brand .word span{font-size:12px; color:var(--muted); letter-spacing:.06em}
+
+nav{display:flex; gap:8px; align-items:center; flex-wrap:wrap;}
+
+.pill{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:10px 12px;
+  border-radius:999px;
+  border:1px solid var(--line);
+  background: rgba(255,255,255,.05);
+  text-decoration:none;
+  font-weight:650;
+  font-size:13px;
+  letter-spacing:.03em;
+  transition: transform .15s ease, border-color .15s ease, background .15s ease;
+}
+.pill:hover{transform: translateY(-1px); border-color: rgba(255,255,255,.22); background: rgba(255,255,255,.05)}
+.pill .dot{width:8px; height:8px; border-radius:999px; background: rgba(255,255,255,.35)}
+.pill[data-accent="panda"] .dot{background: var(--panda)}
+.pill[data-accent="hipa"] .dot{background: var(--hipa)}
+.pill[data-accent="mind"] .dot{background: var(--mind)}
+
+.card{
+  border: 1px solid var(--line);
+  background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(0,0,0,.18));
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow:hidden;
+}
+
+.section{padding: 18px 0 34px;}
+.sectionHead{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:16px;
+  margin: 18px 0 14px;
+}
+.sectionHead h3{
+  margin:0;
+  font-size: 18px;
+  letter-spacing:.10em;
+  text-transform:uppercase;
+  color: var(--text);
+}
+.sectionHead p{margin:0; color: var(--muted); font-size: 13px; line-height: 1.5; max-width: 60ch;}
+
+.split{display:grid; grid-template-columns: 1fr 1fr; gap: 14px;}
+.panel{
+  border: 1px solid var(--line);
+  background: rgba(0,0,0,.42);
+  border-radius: var(--radius);
+  padding: 18px;
+}
+.panel h5{margin:0 0 10px; font-size: 16px; letter-spacing:.08em; text-transform:uppercase;}
+.panel p{margin:0; color: var(--muted); line-height:1.7; font-size: 14px;}
+
+.miniLink{
+  font-size: 13px;
+  text-decoration:none;
+  font-weight:800;
+  letter-spacing:.02em;
+  padding: 9px 10px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,.14);
+  background: rgba(255,255,255,.03);
+  transition: background .15s ease, border-color .15s ease;
+  display:inline-block;
+}
+.miniLink:hover{background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.22)}
+
+footer{
+  padding: 18px;
+  border-top: 1px solid var(--line);
+  color: var(--muted2);
+  font-size: 12px;
+  line-height:1.6;
+}
+
+@media (max-width: 980px){
+  .split{grid-template-columns: 1fr;}
+}
+@media (max-width: 520px){
+  .brand .word span{display:none}
+  .pill{padding: 9px 10px}
+}
+
+main{padding:112px 0 50px;}
+.hero{padding:22px;display:grid;grid-template-columns:1.1fr .9fr;gap:16px;align-items:stretch;}
+h1{margin:0 0 10px;font-size: clamp(34px, 4.4vw, 56px);letter-spacing:-.03em;line-height: 1.05;}
+.sub{margin:0;color:var(--muted);font-size:15.5px;line-height:1.7;max-width:70ch;}
+.badgeRow{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;}
+.badge{padding:8px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.06);font-size:12px;color:var(--text);font-weight:800;letter-spacing:.03em;}
+.heroImg{width:100%;height:280px;object-fit:cover;border-radius:18px;border:1px solid rgba(255,255,255,.14);object-position:50% 70%;background:#000;}
+.sectionBox{margin-top:16px;padding:18px;}
+.list{margin:0;padding-left:18px;color:var(--muted);line-height:1.9;font-size:14px;}
+.scroller{margin-top:12px;display:flex;gap:12px;overflow-x:auto;padding-bottom:6px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling: touch;}
+.scroller::-webkit-scrollbar{height:10px}
+.scroller::-webkit-scrollbar-thumb{background:rgba(255,255,255,.14);border-radius:999px}
+.scroller::-webkit-scrollbar-track{background:rgba(255,255,255,.04);border-radius:999px}
+.imgCard{min-width:220px;max-width:220px;border:1px solid rgba(255,255,255,.14);background:rgba(0,0,0,.38);border-radius:18px;overflow:hidden;scroll-snap-align:start;}
+.imgCard img{width:100%;height:140px;object-fit:cover;display:block;background:#000;}
+.imgCard .cap{padding:10px 10px 12px;color:var(--muted);font-size:13px;line-height:1.4;font-weight:700;}
+@media (max-width: 980px){.hero{grid-template-columns:1fr;} .heroImg{height:240px;}}
+
+.obs-tone-match {
+  filter: grayscale(0.2) contrast(1.05) brightness(0.95);
+}
+</style>
+<meta content="#07070a" name="theme-color"/>
 </head>
-
 <body>
 <header>
-  <div class="wrap">
-    <div class="topbar">
-      <a class="brandWrap" href="index.html" aria-label="ijneb studios home"><svg viewBox="0 0 64 64" role="img" aria-label="ijneb studios logo">
-          <defs>
-            <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0" stop-color="#00ff88" stop-opacity="1" />
-              <stop offset="0.55" stop-color="#00ddff" stop-opacity="1" />
-              <stop offset="1" stop-color="#ff6600" stop-opacity="1" />
-            </linearGradient>
-          </defs>
-          <rect x="0" y="0" width="64" height="64" rx="16" fill="rgba(255,255,255,.03)" stroke="rgba(255,255,255,.10)" />
-          <circle cx="32" cy="32" r="18" fill="none" stroke="url(#g)" stroke-width="2.6" opacity=".95"/>
-          <path d="M16 34 C20 24, 22 44, 26 34 S32 44, 36 34 S42 24, 46 34 S50 44, 52 34" fill="none" stroke="rgba(255,255,255,.85)" stroke-width="2" stroke-linecap="round"/>
-          <circle cx="47" cy="20" r="3.2" fill="#00ff88" />
-          <circle cx="49" cy="44" r="3.2" fill="#00ddff" />
-          <circle cx="20" cy="44" r="3.2" fill="#ff6600" />
-          <path d="M32 32 L47 20" stroke="rgba(255,255,255,.18)" stroke-width="1.8" />
-          <path d="M32 32 L49 44" stroke="rgba(255,255,255,.18)" stroke-width="1.8" />
-          <path d="M32 32 L20 44" stroke="rgba(255,255,255,.18)" stroke-width="1.8" />
-        </svg><div class="word"><strong>ijneb studios</strong><span>production · collective · melbourne</span></div></a>
-      <nav>
-        <a class="pill" href="artists.html" data-accent="panda"><span class="dot"></span>Artists</a>
-        <a class="pill" href="gear.html" data-accent="hipa"><span class="dot"></span>Gear</a>
-        <a class="pill" href="index.html#facility" data-accent="hipa"><span class="dot"></span>Studio</a>
-        <a class="pill" href="index.html#connect" data-accent="mind"><span class="dot"></span>Connect</a>
-      </nav>
-    </div>
-  </div>
+<div class="wrap">
+<div class="topbar">
+<a aria-label="ijneb studios home" class="brand" href="index.html?v=2026-02-09-9">
+<svg aria-label="ijneb studios logo" role="img" viewbox="0 0 64 64">
+<defs>
+<lineargradient id="g" x1="0" x2="1" y1="0" y2="1">
+<stop offset="0" stop-color="#00ff88" stop-opacity="1"></stop>
+<stop offset="0.55" stop-color="#00ddff" stop-opacity="1"></stop>
+<stop offset="1" stop-color="#ff6600" stop-opacity="1"></stop>
+</lineargradient>
+</defs>
+<rect fill="rgba(255,255,255,.03)" height="64" rx="16" stroke="rgba(255,255,255,.10)" width="64" x="0" y="0"></rect>
+<circle cx="32" cy="32" fill="none" opacity=".95" r="18" stroke="url(#g)" stroke-width="2.6"></circle>
+<path d="M16 34 C20 24, 22 44, 26 34 S32 44, 36 34 S42 24, 46 34 S50 44, 52 34" fill="none" stroke="rgba(255,255,255,.85)" stroke-linecap="round" stroke-width="2"></path>
+<circle cx="47" cy="20" fill="#00ff88" r="3.2"></circle>
+<circle cx="49" cy="44" fill="#00ddff" r="3.2"></circle>
+<circle cx="20" cy="44" fill="#ff6600" r="3.2"></circle>
+<path d="M32 32 L47 20" stroke="rgba(255,255,255,.18)" stroke-width="1.8"></path>
+<path d="M32 32 L49 44" stroke="rgba(255,255,255,.18)" stroke-width="1.8"></path>
+<path d="M32 32 L20 44" stroke="rgba(255,255,255,.18)" stroke-width="1.8"></path>
+</svg>
+<div class="word">
+<strong>ijneb studios</strong>
+<span>production · collective · melbourne</span>
+</div>
+</a>
+<nav aria-label="Primary">
+<a class="pill" data-accent="panda" href="artists.html?v=2026-02-09-9"><span class="dot"></span>Artists</a>
+<a class="pill" data-accent="hipa" href="gear.html?v=2026-02-09-9"><span class="dot"></span>Gear</a>
+<a class="pill" data-accent="hipa" href="index.html?v=2026-02-09-9#facility"><span class="dot"></span>Studio</a>
+<a class="pill" data-accent="mind" href="index.html?v=2026-02-09-9#connect"><span class="dot"></span>Connect</a>
+</nav>
+</div>
+</div>
 </header>
-
 <main>
-  <div class="wrap">
-    <h1>Gear</h1>
-    <p>
-      A studio that stays ready. Recording, streaming, and multitrack podcasting with individual monitoring.
-    </p>
-
-
-    <div class="card">
-      <h2>Instruments</h2>
-      <ul>
-        <li>Yamaha P80 digital piano</li>
-        <li>Ibanez RG421AHM guitar</li>
-        <li>Artist PRS style guitar</li>
-        <li>Squier Strat guitar</li>
-        <li>Steel string acoustic guitar</li>
-        <li>Nylon string acoustic guitar</li>
-        <li>Artist slide resonator guitar</li>
-        <li>SX Series bass guitar</li>
-        <li>Donner D80 electronic drumkit</li>
-      </ul>
-    </div>
-
-    <div class="card">
-      <h2>Amps and effects</h2>
-      <ul>
-        <li>BOSS Katana 50 (Gen 1)</li>
-        <li>Roland Cube 15x</li>
-        <li>Wuheaao guitar amp mini, 15W portable</li>
-        <li>BOSS ME-20 multi effects pedal</li>
-      </ul>
-    </div>
-
-    <div class="card">
-      <h2>Audio and monitoring</h2>
-      <ul>
-        <li>Behringer UMC404HD audio interface (4 inputs)</li>
-        <li>8 channel headphone output for up to 8 individual headsets while recording</li>
-        <li>3 sets of wired headphones</li>
-        <li>2 sets of wireless headphones (Bluetooth and USB dongle)</li>
-        <li>Edifier M3 monitors</li>
-        <li>Shure SM7 microphone</li>
-        <li>Yeti Nano microphone</li>
-        <li>4 lapel mics</li>
-      </ul>
-    </div>
-
-    <div class="card">
-      <h2>Computers and software</h2>
-      <ul>
-        <li>MacBook Pro 2018 (studio machine)</li>
-        <li>Logic Pro 11</li>
-        <li>MacBook Pro M1 2022 (available as needed)</li>
-        <li>Dedicated OBS streaming PC</li>
-        <li>External display duplicating the MacBook Pro</li>
-        <li>External touch display (Mac extended, also HDMI into OBS PC for control)</li>
-        <li>Dedicated peripherals for Mac and PC (mouse and keyboard)</li>
-      </ul>
-    </div>
-
-    <div class="card">
-      <h2>Cameras and streaming</h2>
-      <ul>
-        <li>Canon EOS 600D, wide room cam via OBS</li>
-        <li>Microsoft LifeCam webcam, piano cam</li>
-        <li>Samsung S9+, top view room cam via VDO.Ninja</li>
-        <li>Samsung S22 Ultra, lounge cam via VDO.Ninja</li>
-        <li>Samsung Galaxy Tab 8, bedroom cam via VDO.Ninja</li>
-        <li>Multi cam scene switching and streaming via OBS</li>
-      </ul>
-    </div>
-
-    <div class="card">
-      <h2>Podcasting</h2>
-      <ul>
-        <li>Multitrack podcast recording</li>
-        <li>Individual headphone mixes per guest</li>
-        <li>Remote friendly setup with lapel mics and camera angles</li>
-      </ul>
-    </div>
-
-
-    <footer>
+<div class="wrap">
+<div class="card hero">
+<div>
+<h1>Gear</h1>
+<p class="sub">Everything in the room is set up for speed. Record music, run multitrack podcasts, and stream live sessions with individual monitoring.</p>
+<div class="badgeRow">
+<div class="badge">multitrack podcasting</div>
+<div class="badge">live sessions</div>
+<div class="badge">recording</div>
+<div class="badge">streaming</div>
+</div>
+<div style="margin-top:12px;">
+<a class="miniLink" href="index.html?v=2026-02-09-9#connect">Book time</a>
+<a class="miniLink" href="artists.html?v=2026-02-09-9">Artists</a>
+</div>
+</div>
+<div>
+<img alt="Panda Strike" class="heroImg" src="images/ijnebstudios-studioview.jpg"/>
+</div>
+</div>
+<section class="card sectionBox" id="instruments">
+<div class="sectionHead">
+<h3>Instruments</h3>
+<p>Keys, guitars, bass, acoustics, resonator, electronic drums.</p>
+</div>
+<ul class="list">
+<li>Yamaha P80 digital piano</li>
+<li>Ibanez RG421AHM guitar</li>
+<li>Artist PRS guitar</li>
+<li>Squier Strat guitar</li>
+<li>Steel string acoustic guitar</li>
+<li>Nylon string acoustic guitar</li>
+<li>Artist slide resonator guitar</li>
+<li>SX Series Vintage Bass</li>
+<li>Donner D200 electric drumkit</li>
+</ul>
+<div aria-label="Instruments images" class="scroller">
+<div class="imgCard"><img alt="Yamaha P80 digital piano" src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22600%22%20height%3D%22360%22%20viewBox%3D%220%200%20600%20360%22%3E%0A%3Cdefs%3E%0A%20%20%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%0A%20%20%20%20%3Cstop%20offset%3D%220%22%20stop-color%3D%22%2300ff88%22%20stop-opacity%3D%220.9%22/%3E%0A%20%20%20%20%3Cstop%20offset%3D%221%22%20stop-color%3D%22%2300ddff%22%20stop-opacity%3D%220.6%22/%3E%0A%20%20%3C/linearGradient%3E%0A%3C/defs%3E%0A%3Crect%20width%3D%22600%22%20height%3D%22360%22%20rx%3D%2228%22%20fill%3D%22%230b0c11%22/%3E%0A%3Crect%20x%3D%220%22%20y%3D%220%22%20width%3D%22600%22%20height%3D%2264%22%20fill%3D%22url%28%23g%29%22%20opacity%3D%220.18%22/%3E%0A%3Crect%20x%3D%2224%22%20y%3D%2224%22%20width%3D%22552%22%20height%3D%22312%22%20rx%3D%2222%22%20fill%3D%22%2307070a%22%20stroke%3D%22rgba%28255%2C255%2C255%2C0.14%29%22/%3E%0A%3Ctext%20x%3D%2250%25%22%20y%3D%2252%25%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%0A%20%20%20%20%20%20font-family%3D%22Inter%2C%20Arial%2C%20sans-serif%22%20font-size%3D%2236%22%20fill%3D%22white%22%20font-weight%3D%22800%22%3EYamaha%20P80%20digital%20piano%3C/text%3E%0A%3Ctext%20x%3D%2250%25%22%20y%3D%2262%25%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%0A%20%20%20%20%20%20font-family%3D%22Inter%2C%20Arial%2C%20sans-serif%22%20font-size%3D%2216%22%20fill%3D%22rgba%28255%2C255%2C255%2C0.75%29%22%20font-weight%3D%22600%22%3Eimage%20placeholder%3C/text%3E%0A%3C/svg%3E"/><div class="cap">Yamaha P80 digital piano</div></div>
+<div class="imgCard"><img alt="Ibanez RG421AHM guitar" src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22600%22%20height%3D%22360%22%20viewBox%3D%220%200%20600%20360%22%3E%0A%3Cdefs%3E%0A%20%20%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%0A%20%20%20%20%3Cstop%20offset%3D%220%22%20stop-color%3D%22%2300ff88%22%20stop-opacity%3D%220.9%22/%3E%0A%20%20%20%20%3Cstop%20offset%3D%221%22%20stop-color%3D%22%2300ddff%22%20stop-opacity%3D%220.6%22/%3E%0A%20%20%3C/linearGradient%3E%0A%3C/defs%3E%0A%3Crect%20width%3D%22600%22%20height%3D%22360%22%20rx%3D%2228%22%20fill%3D%22%230b0c11%22/%3E%0A%3Crect%20x%3D%220%22%20y%3D%220%22%20width%3D%22600%22%20height%3D%2264%22%20fill%3D%22url%28%23g%29%22%20opacity%3D%220.18%22/%3E%0A%3Crect%20x%3D%2224%22%20y%3D%2224%22%20width%3D%22552%22%20height%3D%22312%22%20rx%3D%2222%22%20fill%3D%22%2307070a%22%20stroke%3D%22rgba%28255%2C255%2C255%2C0.14%29%22/%3E%0A%3Ctext%20x%3D%2250%25%22%20y%3D%2252%25%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%0A%20%20%20%20%20%20font-family%3D%22Inter%2C%20Arial%2C%20sans-serif%22%20font-size%3D%2236%22%20fill%3D%22white%22%20font-weight%3D%22800%22%3EIbanez%20RG421AHM%20guitar%3C/text%3E%0A%3Ctext%20x%3D%2250%25%22%20y%3D%2262%25%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%0A%20%20%20%20%20%20font-family%3D%22Inter%2C%20Arial%2C%20sans-serif%22%20font-size%3D%2216%22%20fill%3D%22rgba%28255%2C255%2C255%2C0.75%29%22%20font-weight%3D%22600%22%3Eimage%20placeholder%3C/text%3E%0A%3C/svg%3E"/><div class="cap">Ibanez RG421AHM guitar</div></div>
+<div class="imgCard"><img alt="Artist PRS guitar" src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22600%22%20height%3D%22360%22%20viewBox%3D%220%200%20600%20360%22%3E%0A%3Cdefs%3E%0A%20%20%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%0A%20%20%20%20%3Cstop%20offset%3D%220%22%20stop-color%3D%22%2300ff88%22%20stop-opacity%3D%220.9%22/%3E%0A%20%20%20%20%3Cstop%20offset%3D%221%22%20stop-color%3D%22%2300ddff%22%20stop-opacity%3D%220.6%22/%3E%0A%20%20%3C/linearGradient%3E%0A%3C/defs%3E%0A%3Crect%20width%3D%22600%22%20height%3D%22360%22%20rx%3D%2228%22%20fill%3D%22%230b0c11%22/%3E%0A%3Crect%20x%3D%220%22%20y%3D%220%22%20width%3D%22600%22%20height%3D%2264%22%20fill%3D%22url%28%23g%29%22%20opacity%3D%220.18%22/%3E%0A%3Crect%20x%3D%2224%22%20y%3D%2224%22%20width%3D%22552%22%20height%3D%22312%22%20rx%3D%2222%22%20fill%3D%22%2307070a%22%20stroke%3D%22rgba%28255%2C255%2C255%2C0.14%29%22/%3E%0A%3Ctext%20x%3D%2250%25%22%20y%3D%2252%25%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%0A%20%20%20%20%20%20font-family%3D%22Inter%2C%20Arial%2C%20sans-serif%22%20font-size%3D%2236%22%20fill%3D%22white%22%20font-weight%3D%22800%22%3EArtist%20PRS%20guitar%3C/text%3E%0A%3Ctext%20x%3D%2250%25%22%20y%3D%2262%25%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%0A%20%20%20%20%20%20font-family%3D%22Inter%2C%20Arial%2C%20sans-serif%22%20font-size%3D%2216%22%20fill%3D%22rgba%28255%2C255%2C255%2C0.75%29%22%20font-weight%3D%22600%22%3Eimage%20placeholder%3C/text%3E%0A%3C/svg%3E"/><div class="cap">Artist PRS guitar</div></div>
+<div class="imgCard"><img alt="Squier Strat guitar" src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22600%22%20height%3D%22360%22%20viewBox%3D%220%200%20600%20360%22%3E%0A%3Cdefs%3E%0A%20%20%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%0A%20%20%20%20%3Cstop%20offset%3D%220%22%20stop-color%3D%22%2300ff88%22%20stop-opacity%3D%220.9%22/%3E%0A%20%20%20%20%3Cstop%20offset%3D%221%22%20stop-color%3D%22%2300ddff%22%20stop-opacity%3D%220.6%22/%3E%0A%20%20%3C/linearGradient%3E%0A%3C/defs%3E%0A%3Crect%20width%3D%22600%22%20height%3D%22360%22%20rx%3D%2228%22%20fill%3D%22%230b0c11%22/%3E%0A%3Crect%20x%3D%220%22%20y%3D%220%22%20width%3D%22600%22%20height%3D%2264%22%20fill%3D%22url%28%23g%29%22%20opacity%3D%220.18%22/%3E%0A%3Crect%20x%3D%2224%22%20y%3D%2224%22%20width%3D%22552%22%20height%3D%22312%22%20rx%3D%2222%22%20fill%3D%22%2307070a%22%20stroke%3D%22rgba%28255%2C255%2C255%2C0.14%29%22/%3E%0A%3Ctext%20x%3D%2250%25%22%20y%3D%2252%25%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%0A%20%20%20%20%20%20font-family%3D%22Inter%2C%20Arial%2C%20sans-serif%22%20font-size%3D%2236%22%20fill%3D%22white%22%20font-weight%3D%22800%22%3ESquier%20Strat%20guitar%3C/text%3E%0A%3Ctext%20x%3D%2250%25%22%20y%3D%2262%25%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%0A%20%20%20%20%20%20font-family%3D%22Inter%2C%20Arial%2C%20sans-serif%22%20font-size%3D%2216%22%20fill%3D%22rgba%28255%2C255%2C255%2C0.75%29%22%20font-weight%3D%22600%22%3Eimage%20placeholder%3C/text%3E%0A%3C/svg%3E"/><div class="cap">Squier Strat guitar</div></div>
+<div class="imgCard"><img alt="Steel string acoustic guitar" src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22600%22%20height%3D%22360%22%20viewBox%3D%220%200%20600%20360%22%3E%0A%3Cdefs%3E%0A%20%20%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%0A%20%20%20%20%3Cstop%20offset%3D%220%22%20stop-color%3D%22%2300ff88%22%20stop-opacity%3D%220.9%22/%3E%0A%20%20%20%20%3Cstop%20offset%3D%221%22%20stop-color%3D%22%2300ddff%22%20stop-opacity%3D%220.6%22/%3E%0A%20%20%3C/linearGradient%3E%0A%3C/defs%3E%0A%3Crect%20width%3D%22600%22%20height%3D%22360%22%20rx%3D%2228%22%20fill%3D%22%230b0c11%22/%3E%0A%3Crect%20x%3D%220%22%20y%3D%220%22%20width%3D%22600%22%20height%3D%2264%22%20fill%3D%22url%28%23g%29%22%20opacity%3D%220.18%22/%3E%0A%3Crect%20x%3D%2224%22%20y%3D%2224%22%20width%3D%22552%22%20height%3D%22312%22%20rx%3D%2222%22%20fill%3D%22%2307070a%22%20stroke%3D%22rgba%28255%2C255%2C255%2C0.14%29%22/%3E%0A%3Ctext%20x%3D%2250%25%22%20y%3D%2252%25%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%0A%20%20%20%20%20%20font-family%3D%22Inter%2C%20Arial%2C%20sans-serif%22%20font-size%3D%2236%22%20fill%3D%22white%22%20font-weight%3D%22800%22%3ESteel%20string%20acoustic%20guitar%3C/text%3E%0A%3Ctext%20x%3D%2250%25%22%20y%3D%2262%25%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%0A%20%20%20%20%20%20font-family%3D%22Inter%2C%20Arial%2C%20sans-serif%22%20font-size%3D%2216%22%20fill%3D%22rgba%28255%2C255%2C255%2C0.75%29%22%20font-weight%3D%22600%22%3Eimage%20placeholder%3C/text%3E%0A%3C/svg%3E"/><div class="cap">Steel string acoustic guitar</div></div>
+<div class="imgCard"><img alt="Nylon string acoustic guitar" src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22600%22%20height%3D%22360%22%20viewBox%3D%220%200%20600%20360%22%3E%0A%3Cdefs%3E%0A%20%20%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%0A%20%20%20%20%3Cstop%20offset%3D%220%22%20stop-color%3D%22%2300ff88%22%20stop-opacity%3D%220.9%22/%3E%0A%20%20%20%20%3Cstop%20offset%3D%221%22%20stop-color%3D%22%2300ddff%22%20stop-opacity%3D%220.6%22/%3E%0A%20%20%3C/linearGradient%3E%0A%3C/defs%3E%0A%3Crect%20width%3D%22600%22%20height%3D%22360%22%20rx%3D%2228%22%20fill%3D%22%230b0c11%22/%3E%0A%3Crect%20x%3D%220%22%20y%3D%220%22%20width%3D%22600%22%20height%3D%2264%22%20fill%3D%22url%28%23g%29%22%20opacity%3D%220.18%22/%3E%0A%3Crect%20x%3D%2224%22%20y%3D%2224%22%20width%3D%22552%22%20height%3D%22312%22%20rx%3D%2222%22%20fill%3D%22%2307070a%22%20stroke%3D%22rgba%28255%2C255%2C255%2C0.14%29%22/%3E%0A%3Ctext%20x%3D%2250%25%22%20y%3D%2252%25%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%0A%20%20%20%20%20%20font-family%3D%22Inter%2C%20Arial%2C%20sans-serif%22%20font-size%3D%2236%22%20fill%3D%22white%22%20font-weight%3D%22800%22%3ENylon%20string%20acoustic%20guitar%3C/text%3E%0A%3Ctext%20x%3D%2250%25%22%20y%3D%2262%25%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%0A%20%20%20%20%20%20font-family%3D%22Inter%2C%20Arial%2C%20sans-serif%22%20font-size%3D%2216%22%20fill%3D%22rgba%28255%2C255%2C255%2C0.75%29%22%20font-weight%3D%22600%22%3Eimage%20placeholder%3C/text%3E%0A%3C/svg%3E"/><div class="cap">Nylon string acoustic guitar</div></div>
+<div class="imgCard"><img alt="Artist slide resonator guitar" src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22600%22%20height%3D%22360%22%20viewBox%3D%220%200%20600%20360%22%3E%0A%3Cdefs%3E%0A%20%20%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%0A%20%20%20%20%3Cstop%20offset%3D%220%22%20stop-color%3D%22%2300ff88%22%20stop-opacity%3D%220.9%22/%3E%0A%20%20%20%20%3Cstop%20offset%3D%221%22%20stop-color%3D%22%2300ddff%22%20stop-opacity%3D%220.6%22/%3E%0A%20%20%3C/linearGradient%3E%0A%3C/defs%3E%0A%3Crect%20width%3D%22600%22%20height%3D%22360%22%20rx%3D%2228%22%20fill%3D%22%230b0c11%22/%3E%0A%3Crect%20x%3D%220%22%20y%3D%220%22%20width%3D%22600%22%20height%3D%2264%22%20fill%3D%22url%28%23g%29%22%20opacity%3D%220.18%22/%3E%0A%3Crect%20x%3D%2224%22%20y%3D%2224%22%20width%3D%22552%22%20height%3D%22312%22%20rx%3D%2222%22%20fill%3D%22%2307070a%22%20stroke%3D%22rgba%28255%2C255%2C255%2C0.14%29%22/%3E%0A%3Ctext%20x%3D%2250%25%22%20y%3D%2252%25%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%0A%20%20%20%20%20%20font-family%3D%22Inter%2C%20Arial%2C%20sans-serif%22%20font-size%3D%2236%22%20fill%3D%22white%22%20font-weight%3D%22800%22%3EArtist%20slide%20resonator%20guitar%3C/text%3E%0A%3Ctext%20x%3D%2250%25%22%20y%3D%2262%25%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%0A%20%20%20%20%20%20font-family%3D%22Inter%2C%20Arial%2C%20sans-serif%22%20font-size%3D%2216%22%20fill%3D%22rgba%28255%2C255%2C255%2C0.75%29%22%20font-weight%3D%22600%22%3Eimage%20placeholder%3C/text%3E%0A%3C/svg%3E"/><div class="cap">Artist slide resonator guitar</div></div>
+<div class="imgCard"><img alt="SX Series Vintage Bass" src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22600%22%20height%3D%22360%22%20viewBox%3D%220%200%20600%20360%22%3E%0A%3Cdefs%3E%0A%20%20%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%0A%20%20%20%20%3Cstop%20offset%3D%220%22%20stop-color%3D%22%2300ff88%22%20stop-opacity%3D%220.9%22/%3E%0A%20%20%20%20%3Cstop%20offset%3D%221%22%20stop-color%3D%22%2300ddff%22%20stop-opacity%3D%220.6%22/%3E%0A%20%20%3C/linearGradient%3E%0A%3C/defs%3E%0A%3Crect%20width%3D%22600%22%20height%3D%22360%22%20rx%3D%2228%22%20fill%3D%22%230b0c11%22/%3E%0A%3Crect%20x%3D%220%22%20y%3D%220%22%20width%3D%22600%22%20height%3D%2264%22%20fill%3D%22url%28%23g%29%22%20opacity%3D%220.18%22/%3E%0A%3Crect%20x%3D%2224%22%20y%3D%2224%22%20width%3D%22552%22%20height%3D%22312%22%20rx%3D%2222%22%20fill%3D%22%2307070a%22%20stroke%3D%22rgba%28255%2C255%2C255%2C0.14%29%22/%3E%0A%3Ctext%20x%3D%2250%25%22%20y%3D%2252%25%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%0A%20%20%20%20%20%20font-family%3D%22Inter%2C%20Arial%2C%20sans-serif%22%20font-size%3D%2236%22%20fill%3D%22white%22%20font-weight%3D%22800%22%3ESX%20Series%20bass%20guitar%3C/text%3E%0A%3Ctext%20x%3D%2250%25%22%20y%3D%2262%25%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%0A%20%20%20%20%20%20font-family%3D%22Inter%2C%20Arial%2C%20sans-serif%22%20font-size%3D%2216%22%20fill%3D%22rgba%28255%2C255%2C255%2C0.75%29%22%20font-weight%3D%22600%22%3Eimage%20placeholder%3C/text%3E%0A%3C/svg%3E"/><div class="cap">SX Series Vintage Bass</div></div>
+<div class="imgCard"><img alt="Donner D200 electric drumkit" src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22600%22%20height%3D%22360%22%20viewBox%3D%220%200%20600%20360%22%3E%0A%3Cdefs%3E%0A%20%20%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%0A%20%20%20%20%3Cstop%20offset%3D%220%22%20stop-color%3D%22%2300ff88%22%20stop-opacity%3D%220.9%22/%3E%0A%20%20%20%20%3Cstop%20offset%3D%221%22%20stop-color%3D%22%2300ddff%22%20stop-opacity%3D%220.6%22/%3E%0A%20%20%3C/linearGradient%3E%0A%3C/defs%3E%0A%3Crect%20width%3D%22600%22%20height%3D%22360%22%20rx%3D%2228%22%20fill%3D%22%230b0c11%22/%3E%0A%3Crect%20x%3D%220%22%20y%3D%220%22%20width%3D%22600%22%20height%3D%2264%22%20fill%3D%22url%28%23g%29%22%20opacity%3D%220.18%22/%3E%0A%3Crect%20x%3D%2224%22%20y%3D%2224%22%20width%3D%22552%22%20height%3D%22312%22%20rx%3D%2222%22%20fill%3D%22%2307070a%22%20stroke%3D%22rgba%28255%2C255%2C255%2C0.14%29%22/%3E%0A%3Ctext%20x%3D%2250%25%22%20y%3D%2252%25%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%0A%20%20%20%20%20%20font-family%3D%22Inter%2C%20Arial%2C%20sans-serif%22%20font-size%3D%2236%22%20fill%3D%22white%22%20font-weight%3D%22800%22%3EDonner%20D80%20electric%20drumkit%3C/text%3E%0A%3Ctext%20x%3D%2250%25%22%20y%3D%2262%25%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%0A%20%20%20%20%20%20font-family%3D%22Inter%2C%20Arial%2C%20sans-serif%22%20font-size%3D%2216%22%20fill%3D%22rgba%28255%2C255%2C255%2C0.75%29%22%20font-weight%3D%22600%22%3Eimage%20placeholder%3C/text%3E%0A%3C/svg%3E"/><div class="cap">Donner D200 electric drumkit</div></div>
+</div>
+</section>
+<section class="card sectionBox" id="amps-and-fx">
+<div class="sectionHead">
+<h3>Amps and FX</h3>
+<p>Core guitar amps plus pedal options.</p>
+</div>
+<ul class="list">
+<li>Boss Katana 50 (Gen1)</li>
+<li>Roland Cube 20x</li>
+<li>Wuheaao Guitar Amp Mini (15W portable)</li>
+<li>BOSS ME-20 multi effects pedal</li>
+</ul>
+<div aria-label="Amps and FX images" class="scroller">
+<div class="imgCard"><img alt="Boss Katana 50 (Gen1)" src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22600%22%20height%3D%22360%22%20viewBox%3D%220%200%20600%20360%22%3E%0A%3Cdefs%3E%0A%20%20%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%0A%20%20%20%20%3Cstop%20offset%3D%220%22%20stop-color%3D%22%2300ddff%22%20stop-opacity%3D%220.9%22/%3E%0A%20%20%20%20%3Cstop%20offset%3D%221%22%20stop-color%3D%22%2300ddff%22%20stop-opacity%3D%220.6%22/%3E%0A%20%20%3C/linearGradient%3E%0A%3C/defs%3E%0A%3Crect%20width%3D%22600%22%20height%3D%22360%22%20rx%3D%2228%22%20fill%3D%22%230b0c11%22/%3E%0A%3Crect%20x%3D%220%22%20y%3D%220%22%20width%3D%22600%22%20height%3D%2264%22%20fill%3D%22url%28%23g%29%22%20opacity%3D%220.18%22/%3E%0A%3Crect%20x%3D%2224%22%20y%3D%2224%22%20width%3D%22552%22%20height%3D%22312%22%20rx%3D%2222%22%20fill%3D%22%2307070a%22%20stroke%3D%22rgba%28255%2C255%2C255%2C0.14%29%22/%3E%0A%3Ctext%20x%3D%2250%25%22%20y%3D%2252%25%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%0A%20%20%20%20%20%20font-family%3D%22Inter%2C%20Arial%2C%20sans-serif%22%20font-size%3D%2236%22%20fill%3D%22white%22%20font-weight%3D%22800%22%3EBoss%20Katana%2050%20%28Gen1%29%3C/text%3E%0A%3Ctext%20x%3D%2250%25%22%20y%3D%2262%25%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%0A%20%20%20%20%20%20font-family%3D%22Inter%2C%20Arial%2C%20sans-serif%22%20font-size%3D%2216%22%20fill%3D%22rgba%28255%2C255%2C255%2C0.75%29%22%20font-weight%3D%22600%22%3Eimage%20placeholder%3C/text%3E%0A%3C/svg%3E"/><div class="cap">Boss Katana 50 (Gen1)</div></div>
+<div class="imgCard"><img alt="Roland Cube 20x" src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22600%22%20height%3D%22360%22%20viewBox%3D%220%200%20600%20360%22%3E%0A%3Cdefs%3E%0A%20%20%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%0A%20%20%20%20%3Cstop%20offset%3D%220%22%20stop-color%3D%22%2300ddff%22%20stop-opacity%3D%220.9%22/%3E%0A%20%20%20%20%3Cstop%20offset%3D%221%22%20stop-color%3D%22%2300ddff%22%20stop-opacity%3D%220.6%22/%3E%0A%20%20%3C/linearGradient%3E%0A%3C/defs%3E%0A%3Crect%20width%3D%22600%22%20height%3D%22360%22%20rx%3D%2228%22%20fill%3D%22%230b0c11%22/%3E%0A%3Crect%20x%3D%220%22%20y%3D%220%22%20width%3D%22600%22%20height%3D%2264%22%20fill%3D%22url%28%23g%29%22%20opacity%3D%220.18%22/%3E%0A%3Crect%20x%3D%2224%22%20y%3D%2224%22%20width%3D%22552%22%20height%3D%22312%22%20rx%3D%2222%22%20fill%3D%22%2307070a%22%20stroke%3D%22rgba%28255%2C255%2C255%2C0.14%29%22/%3E%0A%3Ctext%20x%3D%2250%25%22%20y%3D%2252%25%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%0A%20%20%20%20%20%20font-family%3D%22Inter%2C%20Arial%2C%20sans-serif%22%20font-size%3D%2236%22%20fill%3D%22white%22%20font-weight%3D%22800%22%3ERoland%20Cube%2015x%3C/text%3E%0A%3Ctext%20x%3D%2250%25%22%20y%3D%2262%25%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%0A%20%20%20%20%20%20font-family%3D%22Inter%2C%20Arial%2C%20sans-serif%22%20font-size%3D%2216%22%20fill%3D%22rgba%28255%2C255%2C255%2C0.75%29%22%20font-weight%3D%22600%22%3Eimage%20placeholder%3C/text%3E%0A%3C/svg%3E"/><div class="cap">Roland Cube 20x</div></div>
+<div class="imgCard"><img alt="Wuheaao Guitar Amp Mini (15W portable)" src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22600%22%20height%3D%22360%22%20viewBox%3D%220%200%20600%20360%22%3E%0A%3Cdefs%3E%0A%20%20%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%0A%20%20%20%20%3Cstop%20offset%3D%220%22%20stop-color%3D%22%2300ddff%22%20stop-opacity%3D%220.9%22/%3E%0A%20%20%20%20%3Cstop%20offset%3D%221%22%20stop-color%3D%22%2300ddff%22%20stop-opacity%3D%220.6%22/%3E%0A%20%20%3C/linearGradient%3E%0A%3C/defs%3E%0A%3Crect%20width%3D%22600%22%20height%3D%22360%22%20rx%3D%2228%22%20fill%3D%22%230b0c11%22/%3E%0A%3Crect%20x%3D%220%22%20y%3D%220%22%20width%3D%22600%22%20height%3D%2264%22%20fill%3D%22url%28%23g%29%22%20opacity%3D%220.18%22/%3E%0A%3Crect%20x%3D%2224%22%20y%3D%2224%22%20width%3D%22552%22%20height%3D%22312%22%20rx%3D%2222%22%20fill%3D%22%2307070a%22%20stroke%3D%22rgba%28255%2C255%2C255%2C0.14%29%22/%3E%0A%3Ctext%20x%3D%2250%25%22%20y%3D%2252%25%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%0A%20%20%20%20%20%20font-family%3D%22Inter%2C%20Arial%2C%20sans-serif%22%20font-size%3D%2236%22%20fill%3D%22white%22%20font-weight%3D%22800%22%3EWuheaao%20Guitar%20Amp%20Mini%20%2815W%20portable%29%3C/text%3E%0A%3Ctext%20x%3D%2250%25%22%20y%3D%2262%25%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%0A%20%20%20%20%20%20font-family%3D%22Inter%2C%20Arial%2C%20sans-serif%22%20font-size%3D%2216%22%20fill%3D%22rgba%28255%2C255%2C255%2C0.75%29%22%20font-weight%3D%22600%22%3Eimage%20placeholder%3C/text%3E%0A%3C/svg%3E"/><div class="cap">Wuheaao Guitar Amp Mini (15W portable)</div></div>
+<div class="imgCard"><img alt="BOSS ME-20 multi effects pedal" src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22600%22%20height%3D%22360%22%20viewBox%3D%220%200%20600%20360%22%3E%0A%3Cdefs%3E%0A%20%20%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%0A%20%20%20%20%3Cstop%20offset%3D%220%22%20stop-color%3D%22%2300ddff%22%20stop-opacity%3D%220.9%22/%3E%0A%20%20%20%20%3Cstop%20offset%3D%221%22%20stop-color%3D%22%2300ddff%22%20stop-opacity%3D%220.6%22/%3E%0A%20%20%3C/linearGradient%3E%0A%3C/defs%3E%0A%3Crect%20width%3D%22600%22%20height%3D%22360%22%20rx%3D%2228%22%20fill%3D%22%230b0c11%22/%3E%0A%3Crect%20x%3D%220%22%20y%3D%220%22%20width%3D%22600%22%20height%3D%2264%22%20fill%3D%22url%28%23g%29%22%20opacity%3D%220.18%22/%3E%0A%3Crect%20x%3D%2224%22%20y%3D%2224%22%20width%3D%22552%22%20height%3D%22312%22%20rx%3D%2222%22%20fill%3D%22%2307070a%22%20stroke%3D%22rgba%28255%2C255%2C255%2C0.14%29%22/%3E%0A%3Ctext%20x%3D%2250%25%22%20y%3D%2252%25%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%0A%20%20%20%20%20%20font-family%3D%22Inter%2C%20Arial%2C%20sans-serif%22%20font-size%3D%2236%22%20fill%3D%22white%22%20font-weight%3D%22800%22%3EBOSS%20ME-20%20multi%20effects%20pedal%3C/text%3E%0A%3Ctext%20x%3D%2250%25%22%20y%3D%2262%25%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%0A%20%20%20%20%20%20font-family%3D%22Inter%2C%20Arial%2C%20sans-serif%22%20font-size%3D%2216%22%20fill%3D%22rgba%28255%2C255%2C255%2C0.75%29%22%20font-weight%3D%22600%22%3Eimage%20placeholder%3C/text%3E%0A%3C/svg%3E"/><div class="cap">BOSS ME-20 multi effects pedal</div></div>
+</div>
+</section>
+<section class="card sectionBox" id="audio-and-monitoring">
+<div class="sectionHead">
+<h3>Audio and Monitoring</h3>
+<p>Interface, microphones, monitors, and per-person headphone mixes for jams and podcasts.</p>
+</div>
+<ul class="list">
+<li>Behringer UMC404HD 4 Channel Mixer</li>
+<li>8 Channel Headphone Output</li>
+<li>Shure SM7</li>
+<li>Yeti Nano</li>
+<li>4x wired lapel mics</li>
+<li>2x wireless lapel mics</li>
+<li>Edifier M3</li>
+</ul>
+<div aria-label="Audio and Monitoring images" class="scroller">
+<div class="imgCard"><img alt="Behringer UMC404HD 4 Channel Mixer" src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22600%22%20height%3D%22360%22%20viewBox%3D%220%200%20600%20360%22%3E%0A%3Cdefs%3E%0A%20%20%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%0A%20%20%20%20%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23ff6600%22%20stop-opacity%3D%220.9%22/%3E%0A%20%20%20%20%3Cstop%20offset%3D%221%22%20stop-color%3D%22%2300ddff%22%20stop-opacity%3D%220.6%22/%3E%0A%20%20%3C/linearGradient%3E%0A%3C/defs%3E%0A%3Crect%20width%3D%22600%22%20height%3D%22360%22%20rx%3D%2228%22%20fill%3D%22%230b0c11%22/%3E%0A%3Crect%20x%3D%220%22%20y%3D%220%22%20width%3D%22600%22%20height%3D%2264%22%20fill%3D%22url%28%23g%29%22%20opacity%3D%220.18%22/%3E%0A%3Crect%20x%3D%2224%22%20y%3D%2224%22%20width%3D%22552%22%20height%3D%22312%22%20rx%3D%2222%22%20fill%3D%22%2307070a%22%20stroke%3D%22rgba%28255%2C255%2C255%2C0.14%29%22/%3E%0A%3Ctext%20x%3D%2250%25%22%20y%3D%2252%25%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%0A%20%20%20%20%20%20font-family%3D%22Inter%2C%20Arial%2C%20sans-serif%22%20font-size%3D%2236%22%20fill%3D%22white%22%20font-weight%3D%22800%22%3EBehringer%20UMC404HD%20interface%20%284%20inputs%29%3C/text%3E%0A%3Ctext%20x%3D%2250%25%22%20y%3D%2262%25%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%0A%20%20%20%20%20%20font-family%3D%22Inter%2C%20Arial%2C%20sans-serif%22%20font-size%3D%2216%22%20fill%3D%22rgba%28255%2C255%2C255%2C0.75%29%22%20font-weight%3D%22600%22%3Eimage%20placeholder%3C/text%3E%0A%3C/svg%3E"/><div class="cap">Behringer UMC404HD 4 Channel Mixer</div></div>
+<div class="imgCard"><img alt="8 Channel Headphone Output" src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22600%22%20height%3D%22360%22%20viewBox%3D%220%200%20600%20360%22%3E%0A%3Cdefs%3E%0A%20%20%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%0A%20%20%20%20%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23ff6600%22%20stop-opacity%3D%220.9%22/%3E%0A%20%20%20%20%3Cstop%20offset%3D%221%22%20stop-color%3D%22%2300ddff%22%20stop-opacity%3D%220.6%22/%3E%0A%20%20%3C/linearGradient%3E%0A%3C/defs%3E%0A%3Crect%20width%3D%22600%22%20height%3D%22360%22%20rx%3D%2228%22%20fill%3D%22%230b0c11%22/%3E%0A%3Crect%20x%3D%220%22%20y%3D%220%22%20width%3D%22600%22%20height%3D%2264%22%20fill%3D%22url%28%23g%29%22%20opacity%3D%220.18%22/%3E%0A%3Crect%20x%3D%2224%22%20y%3D%2224%22%20width%3D%22552%22%20height%3D%22312%22%20rx%3D%2222%22%20fill%3D%22%2307070a%22%20stroke%3D%22rgba%28255%2C255%2C255%2C0.14%29%22/%3E%0A%3Ctext%20x%3D%2250%25%22%20y%3D%2252%25%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%0A%20%20%20%20%20%20font-family%3D%22Inter%2C%20Arial%2C%20sans-serif%22%20font-size%3D%2236%22%20fill%3D%22white%22%20font-weight%3D%22800%22%3E8%20channel%20headphone%20output%20%28up%20to%208%20headsets%29%3C/text%3E%0A%3Ctext%20x%3D%2250%25%22%20y%3D%2262%25%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%0A%20%20%20%20%20%20font-family%3D%22Inter%2C%20Arial%2C%20sans-serif%22%20font-size%3D%2216%22%20fill%3D%22rgba%28255%2C255%2C255%2C0.75%29%22%20font-weight%3D%22600%22%3Eimage%20placeholder%3C/text%3E%0A%3C/svg%3E"/><div class="cap">8 Channel Headphone Output</div></div>
+<div class="imgCard"><img alt="Shure SM7" src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22600%22%20height%3D%22360%22%20viewBox%3D%220%200%20600%20360%22%3E%0A%3Cdefs%3E%0A%20%20%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%0A%20%20%20%20%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23ff6600%22%20stop-opacity%3D%220.9%22/%3E%0A%20%20%20%20%3Cstop%20offset%3D%221%22%20stop-color%3D%22%2300ddff%22%20stop-opacity%3D%220.6%22/%3E%0A%20%20%3C/linearGradient%3E%0A%3C/defs%3E%0A%3Crect%20width%3D%22600%22%20height%3D%22360%22%20rx%3D%2228%22%20fill%3D%22%230b0c11%22/%3E%0A%3Crect%20x%3D%220%22%20y%3D%220%22%20width%3D%22600%22%20height%3D%2264%22%20fill%3D%22url%28%23g%29%22%20opacity%3D%220.18%22/%3E%0A%3Crect%20x%3D%2224%22%20y%3D%2224%22%20width%3D%22552%22%20height%3D%22312%22%20rx%3D%2222%22%20fill%3D%22%2307070a%22%20stroke%3D%22rgba%28255%2C255%2C255%2C0.14%29%22/%3E%0A%3Ctext%20x%3D%2250%25%22%20y%3D%2252%25%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%0A%20%20%20%20%20%20font-family%3D%22Inter%2C%20Arial%2C%20sans-serif%22%20font-size%3D%2236%22%20fill%3D%22white%22%20font-weight%3D%22800%22%3EShure%20SM7%3C/text%3E%0A%3Ctext%20x%3D%2250%25%22%20y%3D%2262%25%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%0A%20%20%20%20%20%20font-family%3D%22Inter%2C%20Arial%2C%20sans-serif%22%20font-size%3D%2216%22%20fill%3D%22rgba%28255%2C255%2C255%2C0.75%29%22%20font-weight%3D%22600%22%3Eimage%20placeholder%3C/text%3E%0A%3C/svg%3E"/><div class="cap">Shure SM7</div></div>
+<div class="imgCard"><img alt="Yeti Nano" src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22600%22%20height%3D%22360%22%20viewBox%3D%220%200%20600%20360%22%3E%0A%3Cdefs%3E%0A%20%20%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%0A%20%20%20%20%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23ff6600%22%20stop-opacity%3D%220.9%22/%3E%0A%20%20%20%20%3Cstop%20offset%3D%221%22%20stop-color%3D%22%2300ddff%22%20stop-opacity%3D%220.6%22/%3E%0A%20%20%3C/linearGradient%3E%0A%3C/defs%3E%0A%3Crect%20width%3D%22600%22%20height%3D%22360%22%20rx%3D%2228%22%20fill%3D%22%230b0c11%22/%3E%0A%3Crect%20x%3D%220%22%20y%3D%220%22%20width%3D%22600%22%20height%3D%2264%22%20fill%3D%22url%28%23g%29%22%20opacity%3D%220.18%22/%3E%0A%3Crect%20x%3D%2224%22%20y%3D%2224%22%20width%3D%22552%22%20height%3D%22312%22%20rx%3D%2222%22%20fill%3D%22%2307070a%22%20stroke%3D%22rgba%28255%2C255%2C255%2C0.14%29%22/%3E%0A%3Ctext%20x%3D%2250%25%22%20y%3D%2252%25%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%0A%20%20%20%20%20%20font-family%3D%22Inter%2C%20Arial%2C%20sans-serif%22%20font-size%3D%2236%22%20fill%3D%22white%22%20font-weight%3D%22800%22%3EYeti%20Nano%3C/text%3E%0A%3Ctext%20x%3D%2250%25%22%20y%3D%2262%25%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%0A%20%20%20%20%20%20font-family%3D%22Inter%2C%20Arial%2C%20sans-serif%22%20font-size%3D%2216%22%20fill%3D%22rgba%28255%2C255%2C255%2C0.75%29%22%20font-weight%3D%22600%22%3Eimage%20placeholder%3C/text%3E%0A%3C/svg%3E"/><div class="cap">Yeti Nano</div></div>
+<div class="imgCard"><img alt="4x wired lapel mics" src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22600%22%20height%3D%22360%22%20viewBox%3D%220%200%20600%20360%22%3E%0A%3Cdefs%3E%0A%20%20%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%0A%20%20%20%20%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23ff6600%22%20stop-opacity%3D%220.9%22/%3E%0A%20%20%20%20%3Cstop%20offset%3D%221%22%20stop-color%3D%22%2300ddff%22%20stop-opacity%3D%220.6%22/%3E%0A%20%20%3C/linearGradient%3E%0A%3C/defs%3E%0A%3Crect%20width%3D%22600%22%20height%3D%22360%22%20rx%3D%2228%22%20fill%3D%22%230b0c11%22/%3E%0A%3Crect%20x%3D%220%22%20y%3D%220%22%20width%3D%22600%22%20height%3D%2264%22%20fill%3D%22url%28%23g%29%22%20opacity%3D%220.18%22/%3E%0A%3Crect%20x%3D%2224%22%20y%3D%2224%22%20width%3D%22552%22%20height%3D%22312%22%20rx%3D%2222%22%20fill%3D%22%2307070a%22%20stroke%3D%22rgba%28255%2C255%2C255%2C0.14%29%22/%3E%0A%3Ctext%20x%3D%2250%25%22%20y%3D%2252%25%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%0A%20%20%20%20%20%20font-family%3D%22Inter%2C%20Arial%2C%20sans-serif%22%20font-size%3D%2236%22%20fill%3D%22white%22%20font-weight%3D%22800%22%3E4%20lapel%20mics%3C/text%3E%0A%3Ctext%20x%3D%2250%25%22%20y%3D%2262%25%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%0A%20%20%20%20%20%20font-family%3D%22Inter%2C%20Arial%2C%20sans-serif%22%20font-size%3D%2216%22%20fill%3D%22rgba%28255%2C255%2C255%2C0.75%29%22%20font-weight%3D%22600%22%3Eimage%20placeholder%3C/text%3E%0A%3C/svg%3E"/><div class="cap">4x wired lapel mics</div></div>
+<div class="imgCard"><img alt="2x wireless lapel mics" src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22600%22%20height%3D%22360%22%20viewBox%3D%220%200%20600%20360%22%3E%0A%3Cdefs%3E%0A%20%20%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%0A%20%20%20%20%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23ff6600%22%20stop-opacity%3D%220.9%22/%3E%0A%20%20%20%20%3Cstop%20offset%3D%221%22%20stop-color%3D%22%2300ddff%22%20stop-opacity%3D%220.6%22/%3E%0A%20%20%3C/linearGradient%3E%0A%3C/defs%3E%0A%3Crect%20width%3D%22600%22%20height%3D%22360%22%20rx%3D%2228%22%20fill%3D%22%230b0c11%22/%3E%0A%3Crect%20x%3D%220%22%20y%3D%220%22%20width%3D%22600%22%20height%3D%2264%22%20fill%3D%22url%28%23g%29%22%20opacity%3D%220.18%22/%3E%0A%3Crect%20x%3D%2224%22%20y%3D%2224%22%20width%3D%22552%22%20height%3D%22312%22%20rx%3D%2222%22%20fill%3D%22%2307070a%22%20stroke%3D%22rgba%28255%2C255%2C255%2C0.14%29%22/%3E%0A%3Ctext%20x%3D%2250%25%22%20y%3D%2252%25%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%0A%20%20%20%20%20%20font-family%3D%22Inter%2C%20Arial%2C%20sans-serif%22%20font-size%3D%2236%22%20fill%3D%22white%22%20font-weight%3D%22800%22%3E4%20lapel%20mics%3C/text%3E%0A%3Ctext%20x%3D%2250%25%22%20y%3D%2262%25%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%0A%20%20%20%20%20%20font-family%3D%22Inter%2C%20Arial%2C%20sans-serif%22%20font-size%3D%2216%22%20fill%3D%22rgba%28255%2C255%2C255%2C0.75%29%22%20font-weight%3D%22600%22%3Eimage%20placeholder%3C/text%3E%0A%3C/svg%3E"/><div class="cap">2x wireless lapel mics</div></div>
+<div class="imgCard"><img alt="Edifier M3" src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22600%22%20height%3D%22360%22%20viewBox%3D%220%200%20600%20360%22%3E%0A%3Cdefs%3E%0A%20%20%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%0A%20%20%20%20%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23ff6600%22%20stop-opacity%3D%220.9%22/%3E%0A%20%20%20%20%3Cstop%20offset%3D%221%22%20stop-color%3D%22%2300ddff%22%20stop-opacity%3D%220.6%22/%3E%0A%20%20%3C/linearGradient%3E%0A%3C/defs%3E%0A%3Crect%20width%3D%22600%22%20height%3D%22360%22%20rx%3D%2228%22%20fill%3D%22%230b0c11%22/%3E%0A%3Crect%20x%3D%220%22%20y%3D%220%22%20width%3D%22600%22%20height%3D%2264%22%20fill%3D%22url%28%23g%29%22%20opacity%3D%220.18%22/%3E%0A%3Crect%20x%3D%2224%22%20y%3D%2224%22%20width%3D%22552%22%20height%3D%22312%22%20rx%3D%2222%22%20fill%3D%22%2307070a%22%20stroke%3D%22rgba%28255%2C255%2C255%2C0.14%29%22/%3E%0A%3Ctext%20x%3D%2250%25%22%20y%3D%2252%25%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%0A%20%20%20%20%20%20font-family%3D%22Inter%2C%20Arial%2C%20sans-serif%22%20font-size%3D%2236%22%20fill%3D%22white%22%20font-weight%3D%22800%22%3EEdifier%20M3%20studio%20monitors%3C/text%3E%0A%3Ctext%20x%3D%2250%25%22%20y%3D%2262%25%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%0A%20%20%20%20%20%20font-family%3D%22Inter%2C%20Arial%2C%20sans-serif%22%20font-size%3D%2216%22%20fill%3D%22rgba%28255%2C255%2C255%2C0.75%29%22%20font-weight%3D%22600%22%3Eimage%20placeholder%3C/text%3E%0A%3C/svg%3E"/><div class="cap">Edifier M3</div></div>
+</div>
+</section>
+<section class="card sectionBox" id="computers-and-software">
+<div class="sectionHead">
+<h3>Computers and Software</h3>
+<p>Recording workstation plus streaming box.</p>
+</div>
+<ul class="list">
+<li>MacBook Pro 2018</li>
+<li>Logic Pro 11</li>
+<li>Dedicated OBS streaming PC</li>
+<li>BandLab</li>
+</ul>
+<div aria-label="Computers and Software images" class="scroller">
+<div class="imgCard"><img alt="MacBook Pro 2018" src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22600%22%20height%3D%22360%22%20viewBox%3D%220%200%20600%20360%22%3E%0A%3Cdefs%3E%0A%20%20%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%0A%20%20%20%20%3Cstop%20offset%3D%220%22%20stop-color%3D%22%2300ddff%22%20stop-opacity%3D%220.9%22/%3E%0A%20%20%20%20%3Cstop%20offset%3D%221%22%20stop-color%3D%22%2300ddff%22%20stop-opacity%3D%220.6%22/%3E%0A%20%20%3C/linearGradient%3E%0A%3C/defs%3E%0A%3Crect%20width%3D%22600%22%20height%3D%22360%22%20rx%3D%2228%22%20fill%3D%22%230b0c11%22/%3E%0A%3Crect%20x%3D%220%22%20y%3D%220%22%20width%3D%22600%22%20height%3D%2264%22%20fill%3D%22url%28%23g%29%22%20opacity%3D%220.18%22/%3E%0A%3Crect%20x%3D%2224%22%20y%3D%2224%22%20width%3D%22552%22%20height%3D%22312%22%20rx%3D%2222%22%20fill%3D%22%2307070a%22%20stroke%3D%22rgba%28255%2C255%2C255%2C0.14%29%22/%3E%0A%3Ctext%20x%3D%2250%25%22%20y%3D%2252%25%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%0A%20%20%20%20%20%20font-family%3D%22Inter%2C%20Arial%2C%20sans-serif%22%20font-size%3D%2236%22%20fill%3D%22white%22%20font-weight%3D%22800%22%3EMacBook%20Pro%202018%3C/text%3E%0A%3Ctext%20x%3D%2250%25%22%20y%3D%2262%25%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%0A%20%20%20%20%20%20font-family%3D%22Inter%2C%20Arial%2C%20sans-serif%22%20font-size%3D%2216%22%20fill%3D%22rgba%28255%2C255%2C255%2C0.75%29%22%20font-weight%3D%22600%22%3Eimage%20placeholder%3C/text%3E%0A%3C/svg%3E"/><div class="cap">MacBook Pro 2018</div></div>
+<div class="imgCard"><img alt="Logic Pro 11" src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22600%22%20height%3D%22360%22%20viewBox%3D%220%200%20600%20360%22%3E%0A%3Cdefs%3E%0A%20%20%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%0A%20%20%20%20%3Cstop%20offset%3D%220%22%20stop-color%3D%22%2300ddff%22%20stop-opacity%3D%220.9%22/%3E%0A%20%20%20%20%3Cstop%20offset%3D%221%22%20stop-color%3D%22%2300ddff%22%20stop-opacity%3D%220.6%22/%3E%0A%20%20%3C/linearGradient%3E%0A%3C/defs%3E%0A%3Crect%20width%3D%22600%22%20height%3D%22360%22%20rx%3D%2228%22%20fill%3D%22%230b0c11%22/%3E%0A%3Crect%20x%3D%220%22%20y%3D%220%22%20width%3D%22600%22%20height%3D%2264%22%20fill%3D%22url%28%23g%29%22%20opacity%3D%220.18%22/%3E%0A%3Crect%20x%3D%2224%22%20y%3D%2224%22%20width%3D%22552%22%20height%3D%22312%22%20rx%3D%2222%22%20fill%3D%22%2307070a%22%20stroke%3D%22rgba%28255%2C255%2C255%2C0.14%29%22/%3E%0A%3Ctext%20x%3D%2250%25%22%20y%3D%2252%25%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%0A%20%20%20%20%20%20font-family%3D%22Inter%2C%20Arial%2C%20sans-serif%22%20font-size%3D%2236%22%20fill%3D%22white%22%20font-weight%3D%22800%22%3ELogic%20Pro%2011%3C/text%3E%0A%3Ctext%20x%3D%2250%25%22%20y%3D%2262%25%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%0A%20%20%20%20%20%20font-family%3D%22Inter%2C%20Arial%2C%20sans-serif%22%20font-size%3D%2216%22%20fill%3D%22rgba%28255%2C255%2C255%2C0.75%29%22%20font-weight%3D%22600%22%3Eimage%20placeholder%3C/text%3E%0A%3C/svg%3E"/><div class="cap">Logic Pro 11</div></div>
+<div class="imgCard"><img alt="Dedicated OBS streaming PC" src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22600%22%20height%3D%22360%22%20viewBox%3D%220%200%20600%20360%22%3E%0A%3Cdefs%3E%0A%20%20%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%0A%20%20%20%20%3Cstop%20offset%3D%220%22%20stop-color%3D%22%2300ddff%22%20stop-opacity%3D%220.9%22/%3E%0A%20%20%20%20%3Cstop%20offset%3D%221%22%20stop-color%3D%22%2300ddff%22%20stop-opacity%3D%220.6%22/%3E%0A%20%20%3C/linearGradient%3E%0A%3C/defs%3E%0A%3Crect%20width%3D%22600%22%20height%3D%22360%22%20rx%3D%2228%22%20fill%3D%22%230b0c11%22/%3E%0A%3Crect%20x%3D%220%22%20y%3D%220%22%20width%3D%22600%22%20height%3D%2264%22%20fill%3D%22url%28%23g%29%22%20opacity%3D%220.18%22/%3E%0A%3Crect%20x%3D%2224%22%20y%3D%2224%22%20width%3D%22552%22%20height%3D%22312%22%20rx%3D%2222%22%20fill%3D%22%2307070a%22%20stroke%3D%22rgba%28255%2C255%2C255%2C0.14%29%22/%3E%0A%3Ctext%20x%3D%2250%25%22%20y%3D%2252%25%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%0A%20%20%20%20%20%20font-family%3D%22Inter%2C%20Arial%2C%20sans-serif%22%20font-size%3D%2236%22%20fill%3D%22white%22%20font-weight%3D%22800%22%3EDedicated%20OBS%20streaming%20PC%3C/text%3E%0A%3Ctext%20x%3D%2250%25%22%20y%3D%2262%25%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%0A%20%20%20%20%20%20font-family%3D%22Inter%2C%20Arial%2C%20sans-serif%22%20font-size%3D%2216%22%20fill%3D%22rgba%28255%2C255%2C255%2C0.75%29%22%20font-weight%3D%22600%22%3Eimage%20placeholder%3C/text%3E%0A%3C/svg%3E"/ class="obs-tone-match"><div class="cap">Dedicated OBS streaming PC</div></div>
+<div class="imgCard"><img alt="BandLab" src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22600%22%20height%3D%22360%22%20viewBox%3D%220%200%20600%20360%22%3E%0A%3Cdefs%3E%0A%20%20%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%0A%20%20%20%20%3Cstop%20offset%3D%220%22%20stop-color%3D%22%2300ddff%22%20stop-opacity%3D%220.9%22/%3E%0A%20%20%20%20%3Cstop%20offset%3D%221%22%20stop-color%3D%22%2300ddff%22%20stop-opacity%3D%220.6%22/%3E%0A%20%20%3C/linearGradient%3E%0A%3C/defs%3E%0A%3Crect%20width%3D%22600%22%20height%3D%22360%22%20rx%3D%2228%22%20fill%3D%22%230b0c11%22/%3E%0A%3Crect%20x%3D%220%22%20y%3D%220%22%20width%3D%22600%22%20height%3D%2264%22%20fill%3D%22url%28%23g%29%22%20opacity%3D%220.18%22/%3E%0A%3Crect%20x%3D%2224%22%20y%3D%2224%22%20width%3D%22552%22%20height%3D%22312%22%20rx%3D%2222%22%20fill%3D%22%2307070a%22%20stroke%3D%22rgba%28255%2C255%2C255%2C0.14%29%22/%3E%0A%3Ctext%20x%3D%2250%25%22%20y%3D%2252%25%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%0A%20%20%20%20%20%20font-family%3D%22Inter%2C%20Arial%2C%20sans-serif%22%20font-size%3D%2236%22%20fill%3D%22white%22%20font-weight%3D%22800%22%3EBandLab%3C/text%3E%0A%3Ctext%20x%3D%2250%25%22%20y%3D%2262%25%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%0A%20%20%20%20%20%20font-family%3D%22Inter%2C%20Arial%2C%20sans-serif%22%20font-size%3D%2216%22%20fill%3D%22rgba%28255%2C255%2C255%2C0.75%29%22%20font-weight%3D%22600%22%3Eimage%20placeholder%3C/text%3E%0A%3C/svg%3E"/><div class="cap">BandLab</div></div>
+</div>
+</section>
+<section class="card sectionBox" id="cameras-and-streaming">
+<div class="sectionHead">
+<h3>Cameras and Streaming</h3>
+<p>Multi cam capture, wired and wireless, controlled through OBS.</p>
+</div>
+<ul class="list">
+<li>Canon EOS 600D (room cam)</li>
+<li>Microsoft LifeCam webcam (piano cam)</li>
+<li>Samsung S9+ (TopViewRoom cam via VDO.Ninja)</li>
+<li>Samsung S22 Ultra (Lounge cam via VDO.Ninja)</li>
+<li>Samsung Galaxy Tab 8 (Bedroom cam via VDO.Ninja)</li>
+<li>NUC controlling OBS and cameras</li>
+</ul>
+</section>
+<section class="card sectionBox" id="podcasting">
+<div class="sectionHead">
+<h3>Podcasting</h3>
+<p>Multitrack podcasting available, with lapels and individual monitoring.</p>
+</div>
+<ul class="list">
+<li>Multitrack recording</li>
+<li>4x wired lapel mics</li>
+<li>2x wireless lapel mics</li>
+<li>8 channel headphone output</li>
+<li>Dedicated OBS streaming PC</li>
+</ul>
+<div aria-label="Podcasting images" class="scroller">
+<div class="imgCard"><img alt="Multitrack recording" src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22600%22%20height%3D%22360%22%20viewBox%3D%220%200%20600%20360%22%3E%0A%3Cdefs%3E%0A%20%20%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%0A%20%20%20%20%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23ff6600%22%20stop-opacity%3D%220.9%22/%3E%0A%20%20%20%20%3Cstop%20offset%3D%221%22%20stop-color%3D%22%2300ddff%22%20stop-opacity%3D%220.6%22/%3E%0A%20%20%3C/linearGradient%3E%0A%3C/defs%3E%0A%3Crect%20width%3D%22600%22%20height%3D%22360%22%20rx%3D%2228%22%20fill%3D%22%230b0c11%22/%3E%0A%3Crect%20x%3D%220%22%20y%3D%220%22%20width%3D%22600%22%20height%3D%2264%22%20fill%3D%22url%28%23g%29%22%20opacity%3D%220.18%22/%3E%0A%3Crect%20x%3D%2224%22%20y%3D%2224%22%20width%3D%22552%22%20height%3D%22312%22%20rx%3D%2222%22%20fill%3D%22%2307070a%22%20stroke%3D%22rgba%28255%2C255%2C255%2C0.14%29%22/%3E%0A%3Ctext%20x%3D%2250%25%22%20y%3D%2252%25%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%0A%20%20%20%20%20%20font-family%3D%22Inter%2C%20Arial%2C%20sans-serif%22%20font-size%3D%2236%22%20fill%3D%22white%22%20font-weight%3D%22800%22%3EMultitrack%20recording%3C/text%3E%0A%3Ctext%20x%3D%2250%25%22%20y%3D%2262%25%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%0A%20%20%20%20%20%20font-family%3D%22Inter%2C%20Arial%2C%20sans-serif%22%20font-size%3D%2216%22%20fill%3D%22rgba%28255%2C255%2C255%2C0.75%29%22%20font-weight%3D%22600%22%3Eimage%20placeholder%3C/text%3E%0A%3C/svg%3E"/><div class="cap">Multitrack recording</div></div>
+<div class="imgCard"><img alt="4x wired lapel mics" src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22600%22%20height%3D%22360%22%20viewBox%3D%220%200%20600%20360%22%3E%0A%3Cdefs%3E%0A%20%20%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%0A%20%20%20%20%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23ff6600%22%20stop-opacity%3D%220.9%22/%3E%0A%20%20%20%20%3Cstop%20offset%3D%221%22%20stop-color%3D%22%2300ddff%22%20stop-opacity%3D%220.6%22/%3E%0A%20%20%3C/linearGradient%3E%0A%3C/defs%3E%0A%3Crect%20width%3D%22600%22%20height%3D%22360%22%20rx%3D%2228%22%20fill%3D%22%230b0c11%22/%3E%0A%3Crect%20x%3D%220%22%20y%3D%220%22%20width%3D%22600%22%20height%3D%2264%22%20fill%3D%22url%28%23g%29%22%20opacity%3D%220.18%22/%3E%0A%3Crect%20x%3D%2224%22%20y%3D%2224%22%20width%3D%22552%22%20height%3D%22312%22%20rx%3D%2222%22%20fill%3D%22%2307070a%22%20stroke%3D%22rgba%28255%2C255%2C255%2C0.14%29%22/%3E%0A%3Ctext%20x%3D%2250%25%22%20y%3D%2252%25%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%0A%20%20%20%20%20%20font-family%3D%22Inter%2C%20Arial%2C%20sans-serif%22%20font-size%3D%2236%22%20fill%3D%22white%22%20font-weight%3D%22800%22%3E4%20lapel%20mics%3C/text%3E%0A%3Ctext%20x%3D%2250%25%22%20y%3D%2262%25%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%0A%20%20%20%20%20%20font-family%3D%22Inter%2C%20Arial%2C%20sans-serif%22%20font-size%3D%2216%22%20fill%3D%22rgba%28255%2C255%2C255%2C0.75%29%22%20font-weight%3D%22600%22%3Eimage%20placeholder%3C/text%3E%0A%3C/svg%3E"/><div class="cap">4x wired lapel mics</div></div>
+<div class="imgCard"><img alt="2x wireless lapel mics" src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22600%22%20height%3D%22360%22%20viewBox%3D%220%200%20600%20360%22%3E%0A%3Cdefs%3E%0A%20%20%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%0A%20%20%20%20%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23ff6600%22%20stop-opacity%3D%220.9%22/%3E%0A%20%20%20%20%3Cstop%20offset%3D%221%22%20stop-color%3D%22%2300ddff%22%20stop-opacity%3D%220.6%22/%3E%0A%20%20%3C/linearGradient%3E%0A%3C/defs%3E%0A%3Crect%20width%3D%22600%22%20height%3D%22360%22%20rx%3D%2228%22%20fill%3D%22%230b0c11%22/%3E%0A%3Crect%20x%3D%220%22%20y%3D%220%22%20width%3D%22600%22%20height%3D%2264%22%20fill%3D%22url%28%23g%29%22%20opacity%3D%220.18%22/%3E%0A%3Crect%20x%3D%2224%22%20y%3D%2224%22%20width%3D%22552%22%20height%3D%22312%22%20rx%3D%2222%22%20fill%3D%22%2307070a%22%20stroke%3D%22rgba%28255%2C255%2C255%2C0.14%29%22/%3E%0A%3Ctext%20x%3D%2250%25%22%20y%3D%2252%25%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%0A%20%20%20%20%20%20font-family%3D%22Inter%2C%20Arial%2C%20sans-serif%22%20font-size%3D%2236%22%20fill%3D%22white%22%20font-weight%3D%22800%22%3E4%20lapel%20mics%3C/text%3E%0A%3Ctext%20x%3D%2250%25%22%20y%3D%2262%25%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%0A%20%20%20%20%20%20font-family%3D%22Inter%2C%20Arial%2C%20sans-serif%22%20font-size%3D%2216%22%20fill%3D%22rgba%28255%2C255%2C255%2C0.75%29%22%20font-weight%3D%22600%22%3Eimage%20placeholder%3C/text%3E%0A%3C/svg%3E"/><div class="cap">2x wireless lapel mics</div></div>
+<div class="imgCard"><img alt="8 channel headphone output" src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22600%22%20height%3D%22360%22%20viewBox%3D%220%200%20600%20360%22%3E%0A%3Cdefs%3E%0A%20%20%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%0A%20%20%20%20%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23ff6600%22%20stop-opacity%3D%220.9%22/%3E%0A%20%20%20%20%3Cstop%20offset%3D%221%22%20stop-color%3D%22%2300ddff%22%20stop-opacity%3D%220.6%22/%3E%0A%20%20%3C/linearGradient%3E%0A%3C/defs%3E%0A%3Crect%20width%3D%22600%22%20height%3D%22360%22%20rx%3D%2228%22%20fill%3D%22%230b0c11%22/%3E%0A%3Crect%20x%3D%220%22%20y%3D%220%22%20width%3D%22600%22%20height%3D%2264%22%20fill%3D%22url%28%23g%29%22%20opacity%3D%220.18%22/%3E%0A%3Crect%20x%3D%2224%22%20y%3D%2224%22%20width%3D%22552%22%20height%3D%22312%22%20rx%3D%2222%22%20fill%3D%22%2307070a%22%20stroke%3D%22rgba%28255%2C255%2C255%2C0.14%29%22/%3E%0A%3Ctext%20x%3D%2250%25%22%20y%3D%2252%25%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%0A%20%20%20%20%20%20font-family%3D%22Inter%2C%20Arial%2C%20sans-serif%22%20font-size%3D%2236%22%20fill%3D%22white%22%20font-weight%3D%22800%22%3E8%20channel%20headphone%20output%3C/text%3E%0A%3Ctext%20x%3D%2250%25%22%20y%3D%2262%25%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%0A%20%20%20%20%20%20font-family%3D%22Inter%2C%20Arial%2C%20sans-serif%22%20font-size%3D%2216%22%20fill%3D%22rgba%28255%2C255%2C255%2C0.75%29%22%20font-weight%3D%22600%22%3Eimage%20placeholder%3C/text%3E%0A%3C/svg%3E"/><div class="cap">8 channel headphone output</div></div>
+<div class="imgCard"><img alt="Dedicated OBS streaming PC" src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22600%22%20height%3D%22360%22%20viewBox%3D%220%200%20600%20360%22%3E%0A%3Cdefs%3E%0A%20%20%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%0A%20%20%20%20%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23ff6600%22%20stop-opacity%3D%220.9%22/%3E%0A%20%20%20%20%3Cstop%20offset%3D%221%22%20stop-color%3D%22%2300ddff%22%20stop-opacity%3D%220.6%22/%3E%0A%20%20%3C/linearGradient%3E%0A%3C/defs%3E%0A%3Crect%20width%3D%22600%22%20height%3D%22360%22%20rx%3D%2228%22%20fill%3D%22%230b0c11%22/%3E%0A%3Crect%20x%3D%220%22%20y%3D%220%22%20width%3D%22600%22%20height%3D%2264%22%20fill%3D%22url%28%23g%29%22%20opacity%3D%220.18%22/%3E%0A%3Crect%20x%3D%2224%22%20y%3D%2224%22%20width%3D%22552%22%20height%3D%22312%22%20rx%3D%2222%22%20fill%3D%22%2307070a%22%20stroke%3D%22rgba%28255%2C255%2C255%2C0.14%29%22/%3E%0A%3Ctext%20x%3D%2250%25%22%20y%3D%2252%25%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%0A%20%20%20%20%20%20font-family%3D%22Inter%2C%20Arial%2C%20sans-serif%22%20font-size%3D%2236%22%20fill%3D%22white%22%20font-weight%3D%22800%22%3EDedicated%20OBS%20streaming%20PC%3C/text%3E%0A%3Ctext%20x%3D%2250%25%22%20y%3D%2262%25%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%0A%20%20%20%20%20%20font-family%3D%22Inter%2C%20Arial%2C%20sans-serif%22%20font-size%3D%2216%22%20fill%3D%22rgba%28255%2C255%2C255%2C0.75%29%22%20font-weight%3D%22600%22%3Eimage%20placeholder%3C/text%3E%0A%3C/svg%3E"/ class="obs-tone-match"><div class="cap">Dedicated OBS streaming PC</div></div>
+</div>
+</section>
+<footer class="card">
       © 2026 ijneb studios · Melbourne, AU<br/>
-      ABN 68&nbsp;827&nbsp;519&nbsp;129
-    </footer>
-  </div>
+      ABN 68 827 519 129<br/>
+<span style="opacity:.7">site build: 2026-02-09-1</span>
+</footer>
+</div>
 </main>
+<script>
+  // Gear image loader
+  // Uses an explicit filename map first (because your image filenames are hand-named),
+  // then falls back to slug-based guessing.
+  (function(){
+    const exts = ["webp","jpg","jpeg","png","jfif"];
+    const VERSION = "2026-02-09-2";
+
+    const slugify = (s) => (s || "")
+      .toLowerCase()
+      .replace(/\([^)]*\)/g, "")
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/-+/g, "-")
+      .replace(/^-|-$/g, "");
+
+    // Map: slug(label) -> exact file in /images
+        const FILE_MAP = {
+"yamaha-p80-digital-piano": "images/yamahap80.jfif",
+    "ibanez-rg421ahm-guitar": "images/ibanez.jfif",
+    "artist-prs-guitar": "images/artistguitar.jpg",
+    "squier-strat-guitar": "images/squirestrat.jfif",
+    "steel-string-acoustic-guitar": "images/acousticsteel.jpeg",
+    "nylon-string-acoustic-guitar": "images/acousticnylon.jpeg",
+    "artist-slide-resonator-guitar": "images/slideresonator.jfif",
+    "sx-series-vintage-bass": "images/sxseriesvintagebass.jpg",
+    "donner-d200-electric-drumkit": "images/donnerded20.jfif",
+
+    "boss-katana-50": "images/bosskatana.jpg",
+    "roland-cube-20x": "images/rolandcube.jfif",
+    "wuheaao-guitar-amp-mini": "images/Wuheaaoamp.jfif",
+    "boss-me-20-multi-effects-pedal": "images/bossme20.webp",
+    "behringer-umc404hd-4-channel-mixer": "images/Behringer-UMC404HD.jfif",
+    "8-channel-headphone-output": "images/headphonesplitteramp.jpg",
+    "shure-sm7": "images/shurem7.webp",
+    "yeti-nano": "images/yetinano.jfif",
+    "edifier-m3": "images/edifier-m3.webp",
+
+    "dedicated-obs-streaming-pc": "images/studioobsview.jpg",
+    "bandlab": "images/bandlab.png",
+    "multitrack-recording": "images/multitrackrecording.jpg",
+    "4-lapel-mics": "images/wiredlapelx4.jpg",
+    "macbook-pro-2018": "images/mbookpro2018.jfif",
+    "logic-pro-11": "images/logic.jpg",
+    "2x-wireless-lapel-mics": "images/wirelesslapx2.jpg",
+    "4x-wired-lapel-mics": "images/wiredlapelx4.jpg",
+    "macbook-pro-m1": "images/m1.jfif"
+  };
+
+    const buildCandidates = (label) => {
+      const slug = slugify(label);
+
+      // 1) Explicit map (most reliable)
+      if (FILE_MAP[slug]) {
+        return [`${FILE_MAP[slug]}?v=${VERSION}`];
+      }
+
+      // 2) Fallback: guess common slug filenames (if you ever rename to slug format)
+      const bases = [
+        `images/gear/${slug}`,
+        `images/${slug}`
+      ];
+      const c = [];
+      for (const b of bases){
+        for (const e of exts){
+          c.push(`${b}.${e}?v=${VERSION}`);
+        }
+      }
+      return c;
+    };
+
+    const tryLoad = (img, candidates, i=0) => {
+      if (i >= candidates.length) {
+        // fall back to studio logo
+        img.src = `images/logo.png?v=${VERSION}`;
+        img.classList.add("isPlaceholder");
+        return;
+      }
+      img.onerror = () => tryLoad(img, candidates, i+1);
+      img.src = candidates[i];
+    };
+
+    document.querySelectorAll(".sectionBox").forEach(section => {
+      const labels = Array.from(section.querySelectorAll("ul.list li")).map(li => li.textContent.trim());
+      const cards = section.querySelectorAll(".scroller .imgCard");
+
+      labels.forEach((label, idx) => {
+        const card = cards[idx];
+        if (!card) return;
+        const img = card.querySelector("img");
+        if (!img) return;
+        img.dataset.placeholder = img.getAttribute("src") || "";
+        img.removeAttribute("src");
+        img.classList.remove("isPlaceholder");
+        tryLoad(img, buildCandidates(label));
+      });
+    });
+  })();
+</script>
 </body>
 </html>
