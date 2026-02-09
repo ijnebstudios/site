@@ -1,37 +1,42 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 360">
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="500" viewBox="0 0 1600 500" role="img" aria-label="ijneb studios banner">
   <defs>
-    <linearGradient id="grad" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#00ff88"/>
-      <stop offset="55%" stop-color="#00ddff"/>
-      <stop offset="100%" stop-color="#ff6600"/>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#07070a"/>
+      <stop offset="1" stop-color="#0b0c11"/>
     </linearGradient>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#00ff88"/>
+      <stop offset="0.55" stop-color="#00ddff"/>
+      <stop offset="1" stop-color="#ff6600"/>
+    </linearGradient>
+    <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="18"/>
+    </filter>
   </defs>
 
-  <rect width="1400" height="360" fill="#000000"/>
+  <rect width="1600" height="500" fill="url(#bg)"/>
+  <circle cx="220" cy="250" r="220" fill="rgba(0,255,136,0.10)" filter="url(#soft)"/>
+  <circle cx="1450" cy="120" r="240" fill="rgba(255,102,0,0.10)" filter="url(#soft)"/>
+  <circle cx="1120" cy="420" r="260" fill="rgba(0,221,255,0.08)" filter="url(#soft)"/>
 
-  <g transform="translate(160 180)">
-    <circle r="90" fill="none" stroke="url(#grad)" stroke-width="12"/>
-    <path d="M-55 10 C-35 -30, -15 50, 5 10
-             S35 50, 55 10"
-          fill="none"
-          stroke="#ffffff"
-          stroke-width="10"
-          stroke-linecap="round"/>
-    <circle cx="55" cy="-55" r="10" fill="#00ff88"/>
-    <circle cx="70" cy="55" r="10" fill="#00ddff"/>
-    <circle cx="-55" cy="55" r="10" fill="#ff6600"/>
+  <!-- Logo -->
+  <g transform="translate(120,130) scale(1.0)">
+    <rect x="0" y="0" width="240" height="240" rx="56" fill="#0b0c11" stroke="rgba(255,255,255,0.14)" stroke-width="4"/>
+    <circle cx="120" cy="120" r="74" fill="none" stroke="url(#g)" stroke-width="10" opacity="0.95"/>
+    <path d="M52 130 C68 90, 76 154, 92 130 S120 154, 136 130 S164 90, 180 130 S204 154, 212 130"
+          fill="none" stroke="rgba(255,255,255,0.88)" stroke-width="10" stroke-linecap="round"/>
+    <circle cx="180" cy="72" r="12" fill="#00ff88"/>
+    <circle cx="188" cy="168" r="12" fill="#00ddff"/>
+    <circle cx="68" cy="168" r="12" fill="#ff6600"/>
+    <path d="M120 120 L180 72" stroke="rgba(255,255,255,0.18)" stroke-width="8" />
+    <path d="M120 120 L188 168" stroke="rgba(255,255,255,0.18)" stroke-width="8" />
+    <path d="M120 120 L68 168" stroke="rgba(255,255,255,0.18)" stroke-width="8" />
   </g>
 
-  <text x="320" y="200"
-        font-family="Inter, Arial, sans-serif"
-        font-size="96"
-        font-weight="800"
-        letter-spacing="4"
-        fill="#ffffff">ijneb studios</text>
+  <!-- Wordmark -->
+  <text x="420" y="240" fill="#f7f8fb" font-family="Inter, Arial, sans-serif" font-size="84" font-weight="800" letter-spacing="2">ijneb studios</text>
+  <text x="420" y="295" fill="rgba(255,255,255,0.76)" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="600" letter-spacing="3">production · collective · melbourne</text>
 
-  <text x="320" y="250"
-        font-family="Inter, Arial, sans-serif"
-        font-size="24"
-        letter-spacing="3"
-        fill="#bbbbbb">production · collective · melbourne</text>
+  <!-- Accent line -->
+  <rect x="420" y="320" width="900" height="6" rx="3" fill="url(#g)" opacity="0.85"/>
 </svg>
