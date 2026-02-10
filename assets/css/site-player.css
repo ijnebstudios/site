@@ -115,3 +115,12 @@
   background: rgba(170, 95, 10, .26);
 }
 .spBtnMain.isPause:hover{ background: rgba(170, 95, 10, .34); }
+
+/* Disable toggles to Enable */
+.spBtnDisable.isEnable{
+  border-color: rgba(80, 200, 120, .28);
+  background: rgba(40, 140, 80, .22);
+}
+.spBtnDisable.isEnable:hover{
+  background: rgba(40, 140, 80, .30);
+}

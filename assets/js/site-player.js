@@ -98,6 +98,9 @@
         mainBtn.textContent = "Play + Unmute";
         mainBtn.classList.add("isPlay");
         mainBtn.classList.remove("isPause");
+        
+        disableBtn.textContent = "Enable";
+        disableBtn.classList.add("isEnable");
         try{ audio.pause(); }catch(e){}
         return;
       }
@@ -105,7 +108,11 @@
       mainBtn.disabled = false;
       vol.disabled = false;
 
-      const playing = !audio.paused && !audio.ended;
+      
+
+      disableBtn.textContent = "Disable";
+      disableBtn.classList.remove("isEnable");
+const playing = !audio.paused && !audio.ended;
       if(playing){
         player.classList.add("isPlaying");
         status.textContent = "Playing";

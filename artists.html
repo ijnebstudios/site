@@ -219,6 +219,16 @@ h1{margin:0 0 10px;font-size: clamp(34px, 4.4vw, 56px);letter-spacing:-.03em;lin
 }
 </script>
 
+<style>
+/* artist buttons row */
+.btnRow{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  align-items:center;
+}
+</style>
+
 </head>
 <body>
 <header>
@@ -357,5 +367,25 @@ h1{margin:0 0 10px;font-size: clamp(34px, 4.4vw, 56px);letter-spacing:-.03em;lin
   </div>
 </main>
   <script src="assets/js/site-player.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function(){
+    function pauseSite(){
+      if(window.IJNEB && typeof window.IJNEB.pauseSiteAudio === 'function'){
+        window.IJNEB.pauseSiteAudio();
+      }
+    }
+    var bl = document.getElementById('bandlab');
+    if(!bl) return;
+    bl.addEventListener('pointerdown', pauseSite, {passive:true});
+    bl.addEventListener('click', pauseSite, {passive:true});
+    var frame = bl.querySelector('iframe');
+    if(frame){
+      // We cannot listen to play events inside the iframe, but user interaction is enough.
+      frame.addEventListener('pointerdown', pauseSite, {passive:true});
+      frame.addEventListener('click', pauseSite, {passive:true});
+    }
+  });
+</script>
+
 </body>
 </html>
