@@ -1,0 +1,117 @@
+/* ijneb studios - site player (working version, no credits) */
+.sitePlayer{
+  position: fixed;
+  left: 14px;
+  right: 14px;
+  bottom: 14px;
+  z-index: 9999;
+  border: 1px solid rgba(255,255,255,.10);
+  background: rgba(0,0,0,.68);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,.55);
+}
+
+.sitePlayerInner{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding: 10px 12px;
+}
+
+.sitePlayerControls{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+
+.spBtn{
+  appearance:none;
+  border: 1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.06);
+  color:#fff;
+  padding: 8px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  cursor:pointer;
+  line-height:1;
+}
+
+.spBtn:hover{ background: rgba(255,255,255,.10); }
+
+/* Colour tweak requested: dark red disable button */
+.spBtnDisable{
+  border-color: rgba(255,90,90,.22);
+  background: rgba(120, 10, 10, .24);
+  color: rgba(255,255,255,.92);
+}
+.spBtnDisable:hover{ background: rgba(120, 10, 10, .32); }
+
+.spVol{ width: 140px; }
+
+.spState{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  opacity:.75;
+}
+
+.eq{
+  width: 18px;
+  height: 12px;
+  display: inline-flex;
+  gap:2px;
+}
+.eq i{
+  display:block;
+  width:3px;
+  height:100%;
+  background: rgba(255,255,255,.65);
+  border-radius:2px;
+  transform-origin: bottom;
+  transform: scaleY(.25);
+  opacity:.7;
+}
+.sitePlayer.isPlaying .eq i{
+  animation: eqBounce 900ms infinite ease-in-out;
+  opacity:.9;
+}
+.sitePlayer.isPlaying .eq i:nth-child(2){ animation-delay: 120ms; }
+.sitePlayer.isPlaying .eq i:nth-child(3){ animation-delay: 240ms; }
+
+@keyframes eqBounce{
+  0%,100%{ transform: scaleY(.25); }
+  50%{ transform: scaleY(1); }
+}
+
+.spProgressWrap{
+  height: 4px;
+  background: rgba(255,255,255,.10);
+  cursor:pointer;
+}
+.spProgress{
+  height:100%;
+  width:0%;
+  background: rgba(255,255,255,.55);
+}
+
+@media (max-width: 740px){
+  .spVol{ width: 110px; }
+}
+
+/* Button colour states */
+.spBtnMain.isPlay{
+  border-color: rgba(80, 200, 120, .28);
+  background: rgba(40, 140, 80, .26);
+}
+.spBtnMain.isPlay:hover{ background: rgba(40, 140, 80, .34); }
+
+.spBtnMain.isPause{
+  border-color: rgba(255, 170, 60, .30);
+  background: rgba(170, 95, 10, .26);
+}
+.spBtnMain.isPause:hover{ background: rgba(170, 95, 10, .34); }
